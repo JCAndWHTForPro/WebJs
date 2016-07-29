@@ -1,0 +1,21 @@
+.tablePanel{
+    margin:0 !important;
+}
+table.tablePanel tr td,th{
+	text-align:center;
+	border:1px solid #928787 !important;
+}
+table.tablePanel tr th{
+	background-color:#DED8D8;
+}
+.panel-body-my{
+    padding:0 !important;
+}
+.button-td{
+    padding:3px !important;
+    width:20%;
+}
+.container{
+	height:100%;
+	overflow:auto;
+}

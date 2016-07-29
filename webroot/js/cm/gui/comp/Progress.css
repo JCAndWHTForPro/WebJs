@@ -1,0 +1,22 @@
+.myProgress{
+    position:absolute;
+    border:1px 1px;
+    width:100%;
+    background-color:#D8D1D1 !important;
+}
+.myTextSpan{
+    position:absolute;
+    width:100%;
+    height:100%;
+    text-align:center;
+    top:0;
+    left:0;
+}
+.modal-padding-center{
+    padding-top:20%;
+}
+.modal-body-my{
+    padding:0 !important;
+    margin:12px 12px !important;
+    height:30px;
+}

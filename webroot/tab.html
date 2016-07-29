@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./js/cm-frame.css">
+    <script type="text/javascript" src="./js/jquery/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="./js/avalon/avalon-1.5.js"></script>
+    <script type="text/javascript" src="./js/cm-frame.js"></script>
+    <script>
+        $import("cm.gui.comp.Panel");
+        $(function(){
+            var frame = new cm.gui.comp.Panel("tab2.html");
+//            frame.setUrl("tab1.html");
+            frame.addOnloadListener(function(){
+               console.log("frame loaded");
+                console.log(frame.getSubWindow())
+            });
+            frame.linkDOM("container");
+        });
+
+    </script>
+
+    <title>Title</title>
+</head>
+<body id="container">
+</body>
+</html>

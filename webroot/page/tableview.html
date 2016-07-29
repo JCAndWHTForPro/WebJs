@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Table View</title>
+<!--   <script type="text/javascript" src="./js/customer/tableview.js"></script>   -->
+<link rel="stylesheet" type="text/css" href="./css/customer/tableview.css">
+  <script type="text/javascript">
+    
+    // JavaScript Document
+  var tableviewmodel = avalon.define({
+        $id: "cmtableview",
+        cmTableHead: [],
+        cmTableBody: []
+  });
+   getData();
+
+   function getData(){
+      $.get({
+            url: "http://localhost:8082/tableView",
+            data:{ },
+            success: function (data) {
+              tableviewmodel.cmTableHead = data.fieldNames;
+              tableviewmodel.cmTableBody = data.fieldValueList;
+          
+          $("#table-body tr").each(function(){
+      		$(this).click(function(){
+      			$(this).addClass("after-selected");
+      		});
+      	});
+      	
+      	var size = $("#table-body tr").length;
+      	for (i = 0;i < size;i++){
+      		if(i%2 == 0){
+      			$($("#table-body tr").get(i)).addClass("odd-row");
+      		}else{
+      			$($("#table-body tr").get(i)).addClass("even-row");
+      			
+      		}
+      	}
+      }
+  })
+}
+    
+   
+
+  </script>
+</head>
+
+<body>
+<div class="container" ms-controller="cmtableview">
+  <table class="table" >
+    <thead id="table-head">
+      <tr>
+        <td  ms-repeat="cmTableHead">{{el}}</td>
+      </tr>
+    <thead>
+    <tbody id="table-body">
+      <tr ms-repeat="cmTableBody">
+        <td  ms-repeat-elem="el">{{elem}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

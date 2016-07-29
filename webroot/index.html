@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./js/cm-frame.css">
+    <script type="text/javascript" src="./js/jquery/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="./js/avalon/avalon-1.5.js"></script>
+    <script type="text/javascript" src="./js/cm-frame.js"></script>
+    <script type="text/javascript">
+
+        $import("cm.wsf.topo.MainPanel");
+        $import("cm.wsf.topo.MocTreeController");
+        $import("cm.wsf.topo.NeTreeController");
+        $import("cm.wsf.topo.TableViewController");
+        $import("cm.gui.comp.tab.TabPanel");
+
+        $(function () {
+
+            var mainPanel = new cm.wsf.topo.MainPanel("container");
+
+            var neTreeController = new cm.wsf.topo.NeTreeController(mainPanel);
+
+            var mocTreeController = new cm.wsf.topo.MocTreeController(mainPanel);
+
+            var tabPanel = new cm.gui.comp.tab.TabPanel();
+            mainPanel.getCenterPanel().setRightComponent(tabPanel);
+
+            var tableViewController = new cm.wsf.topo.TableViewController(tabPanel);
+
+            tableViewController.registTreeClickEvent(neTreeController.getNeTree());
+
+            tableViewController.registTreeClickEvent(mocTreeController.getMocTree());
+
+            mocTreeController.registNeTreeClickEvent(neTreeController.getNeTree());
+            
+            var dataAreaId = window.location.search.split("dataAreaId=")[1]||0
+            neTreeController.requestNeData(dataAreaId);
+
+        });
+    </script>
+    <title>CurrentArea Management</title>
+</head>
+<body id="container">
+</body>
+</html>

@@ -1,0 +1,14 @@
+.moc-tree-panel{
+	height: 50%;
+	width: 100%;
+	position: absolute;
+	overflow: auto;
+	/*border:1px solid #CCC;*/
+	left: 0;
+	top: 50%;
+}
+.moc-tree-content{
+	height: 100%;
+	position: absolute;
+	white-space:nowrap;
+}

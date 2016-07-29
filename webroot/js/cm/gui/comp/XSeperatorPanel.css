@@ -1,0 +1,4 @@
+.x-seperator{width:100%;height: 100%;}
+.x-seperator-ul{list-style: none;width: 100%;height: 100%;margin:0;}
+.x-seperator-li{list-style: none;float: left;height: 100%;overflow: hidden;}
+.x-seperator-label{float: left;width: 10px;height: 100%;cursor: e-resize;margin:0;background: #ccc;}

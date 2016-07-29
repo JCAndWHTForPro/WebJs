@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./js/cm-frame.css">
+	<title>PlannedArea Management</title>
+    <script type="text/javascript" src="./js/jquery/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="./js/cometd/cometd.js"></script>
+        <script type="text/javascript" src="./js/cometd/jquery.cometd.js"></script>
+    <script type="text/javascript" src="./js/avalon/avalon.js"></script>
+    <script type="text/javascript" src="./js/cm-frame.js"></script>
+    <script type="text/javascript">
+        $import("cm.wsf.topo.PlannedAreaTablePanel");
+        $import("cm.gui.comp.Dialog");
+        $import("cm.gui.comp.Progress");
+        $(function(){
+            //将进度条添加到DOM中
+            var progress = new cm.gui.comp.Progress();
+            progress.linkDOM("container");
+
+            //将对话框加入到DOM中
+            var dialog = new cm.gui.comp.Dialog();
+            dialog.linkDOM("container");
+
+            //初始化规划区管理界面
+            var plannedAreaTable = new cm.wsf.topo.PlannedAreaTablePanel(dialog,progress);
+            plannedAreaTable.linkDOM("container");
+        })
+    </script>
+</head>
+<body id="container">
+	
+</body>
+</html>

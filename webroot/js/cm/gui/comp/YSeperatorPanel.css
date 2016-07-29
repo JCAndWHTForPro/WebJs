@@ -1,0 +1,4 @@
+.y-seperator{width:100%;height:100%;}
+.y-seperator-ul{list-style: none;width: 100%;height: 100%;margin:0;padding:0;}
+.y-seperator-li{list-style: none;width: 100%;overflow: hidden;margin:0;padding:0;}
+.y-seperator-label{list-style: none;height: 10px;width: 100%;cursor: n-resize;margin:0;padding:0;display: list-item;background: #ccc;}

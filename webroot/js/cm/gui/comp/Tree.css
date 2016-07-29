@@ -1,0 +1,19 @@
+.ne-tree-panel{
+	height: 100%;
+	width:100%;
+	/* position: absolute; */
+	overflow:auto;
+	/* border: 1px solid #CCC; */
+	
+}
+.ne-tree-content{
+	height: 100%;
+	/* position: absolute; */
+	white-space:nowrap;
+}
+
+ .ne-tree-content ul li{
+	padding:2px 10px;
+	font-size:14px;
+	color:#666;
+} 

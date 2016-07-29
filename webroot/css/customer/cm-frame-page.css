@@ -1,0 +1,52 @@
+.top{
+    background:#008ed3;
+    height:42px;
+}
+.top div{
+	height: 42px;
+	line-height: 42px;
+	float: left;
+	padding: 0;
+	color: #ffffff;
+}
+.top-left{
+	width: 170px;
+	padding: 0 0 0 10px !important;
+	font-size: 20px;
+	
+}
+.top-center{
+	font-size: 16px;
+}
+.top-right{
+	padding: 0 10px 0 0 !important;
+	float: right !important;
+	font-size: 16px;
+}
+.content{
+    padding: 0px;
+
+}
+.content-left{
+    width:170px;
+    border-right: 1px solid #CCC;
+    padding-left: 1px;
+    position: absolute;
+    height: 100%;
+    left:0;
+    top:0;
+ 	
+}
+
+
+.content-right{
+    position: absolute;
+    height: 100%;
+    left:170px;
+    top:0;
+}
+.foot{
+    background:#efefef;
+    height:38px;
+    text-align: center;
+}
