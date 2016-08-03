@@ -8,48 +8,36 @@
     <script type="text/javascript" src="./js/bootstrap/bootstrap.js"></script>
     <script type="text/javascript" src="./js/avalon/avalon.js"></script>
     <script type="text/javascript">
+    $(function(){
 
+    })
 
+    var vm = avalon.define({
 
+        $id:"jicheng",
+        currenvalue:"Action",
+        liClick:function(){
+            console.log($(this).text());
+            vm.currenvalue = $(this).text();
+        }
+    });
     </script>
     <style type="text/css">
     </style>
 </head>
 <body>
-<div>
-    
-<div id="masking" style="z-index:1002;opacity:.20; background-color: black;display:none;width: 133px;height: 39px;position: absolute;">
+<div class="btn-group" ms-controller="jicheng">
+  <input type="text" style="float: left;height:34px;" ms-value="currenvalue"/>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" style="height:80px;overflow:auto">
+    <li><a href="#" ms-click="liClick">Action</a></li>
+    <li><a href="#" ms-click="liClick">Another action</a></li>
+    <li><a href="#" ms-click="liClick">Something else here</a></li>
+    <li><a href="#" ms-click="liClick">Separated link</a></li>
+  </ul>
 </div>
-    
-<nav id="tablePagination" style="z-index:1001;position: absolute;">
-    <ul class="pagination" style="margin: 0;" ms-controller="paginationController">
-        <li>
-            <a href="#" aria-label="Previous" ms-click="previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <!-- <li ms-repeat="pageArr" ms-class="active: $index+1  == currentPage" data-repeat-rendered="pageRepeatArrCallFun">
-            <a href="#" ms-click="pageClick">{{$index+1}}</a>
-        </li> -->
-        <li>
-            <a href="#" aria-label="Next" ms-click="next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-</div>
-<script type="text/javascript">
-    var callFun = function(vm){
-        vm.size = 2;
-        vm.pageArr = [];
-        vm.next = function(){
-            console.log($("#masking"));
-        }
-        
-    }
-    var paginationVM = avalon.define("paginationController",callFun);
-    avalon.scan();
-</script>
 </body>
 </html>
