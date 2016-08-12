@@ -1,0 +1,72 @@
+﻿¿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+	<link rel="stylesheet" type="text/css" href="../css/customer/cm-activate-page.css">
+    <script type="text/javascript" src="../js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="../js/customer/Common.js"></script>
+    <script type="text/javascript" src="../js/customer/activate.js"></script>
+    <script type="text/javascript" src="../js/cometd/cometd.js"></script>
+    <script type="text/javascript" src="../js/cometd/jquery.cometd.js"></script>	
+
+</head>
+
+<body>
+	<div class="north-title" >激活任务 > 整表激活</div>
+	<div class="rightcontainer" >
+				
+		<div class="element" style="margin-left:10px;width:920px">
+			<div style="margin-left:0px;width:100%;margin-top:-10px;color:dimgray;">        
+				 <span class='table-title'>选择激活任务类型：</span>
+				 <span id="option">
+					 <label><input type="radio" checked="checked" name="activate-type" value="整表"><span>整表</span></label>
+					 <label><input type="radio" name="activate-type" value="增量"><span>增量</span></label>
+				 </span>
+			</div>			
+			<div style="height:30px"></div>			
+			<span id="activate_span"  class="button" style="background:#2db6ed;color:#ffffff;">
+				<input type="file" id="activate_input" value="开始激活"
+					   >开始激活
+			</span>			
+			<span id="cancleActivate_span" class="button" style="margin-left:20px;">
+				<input type="button" id="cancle_Activate" value="取消激活"
+					   onclick=activate.dispatcher.cancleActivate()>取消激活
+			</span>			
+			<div style="height:30px"></div>			
+			<div style="height:27px;">
+				<span class='table-title'>任务进度</span>
+			</div>			
+			<div id="whole_processBar" style="top:12px;float:right;position:relative;width:100%;"></div>			
+		</div>	   
+		<div style="height:95px"></div>
+		<div class="element" style="width:920px;margin:10px">			
+			<div style="height:27px;">
+				<span class='table-title'>网元进度</span>
+			</div>
+			<div ng-app="myApp" ng-controller="customersCtrl"> 				
+				<table class="common-table" style="width:920px;height:auto">
+					<tr>
+						<th>网元</th>
+						<th>进度消息</th>
+					</tr>
+					<tr ng-repeat="(key,value) in neStatusMap">
+						<td>{{ key }}</td>
+						<td id='{{ key.split(",")[2] }}'></td>
+					</tr>
+				</table>
+			</div>
+			<div style="height:30px"></div>
+		</div>		
+	</div>
+	
+	<script>
+		$('#activate_input').change( activate.dispatcher.beginActivate )
+	</script>
+	
+</body>
+</html>

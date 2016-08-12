@@ -6,7 +6,6 @@ package("cm.wsf.topo");
 $import("cm.gui.comp.TableView");
 
 cm.wsf.topo.TableViewController = function(tabPanel){
-
     var treeOnClick = function(tree,nodeData){
         var requestParam;
         if (typeof(tree.getNeData) == 'function') {
@@ -30,10 +29,10 @@ cm.wsf.topo.TableViewController = function(tabPanel){
                 treePath: nodeData.treePath
             }
         }
-        var target = (requestParam.dataAreaId==0?"currentArea":"plannedArea");
+        var target = (requestParam.dataAreaId==0?"cm-current-area":"cm-plan-area");
     	  console.log("requestParam.dataAreaId:"+requestParam.dataAreaId + "  target:" + target)
         $.get({
-            url: "/api/"+target+"/v1/getTableView?treeNodeInfo="+JSON.stringify(requestParam),
+            url: getAPIPath(target)+"/getTableView?treeNodeInfo="+JSON.stringify(requestParam),
             success: function (data) {
             	if(data.code!="0"){
                  alert(data.message);
@@ -49,8 +48,7 @@ cm.wsf.topo.TableViewController = function(tabPanel){
                 }
          
                 tabPanel.addPanel(id,title,tableView,true);
-                tableView.getTableView().cmTableHead = data.fieldNames;
-                tableView.getTableView().cmTableBody = data.fieldValueList;
+                tableView.dealData(data);
             }
         })
     }

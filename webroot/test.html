@@ -8,36 +8,97 @@
     <script type="text/javascript" src="./js/bootstrap/bootstrap.js"></script>
     <script type="text/javascript" src="./js/avalon/avalon.js"></script>
     <script type="text/javascript">
-    $(function(){
 
-    })
+<<<<<<< HEAD
+        $(function () {
+            $("tr").click(function (event) {
+                console.log(this);
+            });
 
-    var vm = avalon.define({
+            $("#testbtn").click(function () {
+//                $.post("http://localhost:8083/api/cmModel/v1/save",{
+//                    name:"jon",
+//                    age: "12"
+//                },function(event){
+//                    alert("save person success");
+//                }, "json");
 
-        $id:"jicheng",
-        currenvalue:"Action",
-        liClick:function(){
-            console.log($(this).text());
-            vm.currenvalue = $(this).text();
-        }
-    });
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/api/cm-model/v1/save",
+                    dataType: 'json',
+//                    contentType: "application/json; charset=UTF-8",
+                    data: JSON.stringify({
+                        name: "jon",
+                        age: 28,
+                        son:{
+                            name:"jon ' son",
+                            age:1
+                        }
+                    }),
+                    success: function (data) {
+                        alert('数据加载成功');
+                    }
+                    ,
+                    error: function (xhr, type) {
+                        alert('数据加载失败');
+                    }
+                });
+            });
+        })
+=======
+        var arr = [1,2,3];
+        var arr1 = [3,4,5];
+        arr = arr.concat(arr1);
+        console.log(arr);           
+>>>>>>> df54e889fa8ce7e32530238347fe9c58765b5b31
+
     </script>
     <style type="text/css">
+        table {
+            margin-left: 70px;
+
+        }
+
+        table tr:hover {
+            background: #FFFF00;
+        }
+
+        table tr:active {
+            background: #CCCF00;
+        }
+
+        table tr td {
+            border: 1px solid #928787;
+            padding: 40px;
+        }
+
+        .trSelected {
+            background: #CCCF00;
+        }
     </style>
 </head>
 <body>
-<div class="btn-group" ms-controller="jicheng">
-  <input type="text" style="float: left;height:34px;" ms-value="currenvalue"/>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu" style="height:80px;overflow:auto">
-    <li><a href="#" ms-click="liClick">Action</a></li>
-    <li><a href="#" ms-click="liClick">Another action</a></li>
-    <li><a href="#" ms-click="liClick">Something else here</a></li>
-    <li><a href="#" ms-click="liClick">Separated link</a></li>
-  </ul>
-</div>
+<<<<<<< HEAD
+<input id="testbtn" type="button" value="save person"/>
+<table>
+    <tr>
+        <td>adsf</td>
+        <td>adsf</td>
+        <td>adsf</td>
+    </tr>
+    <tr>
+        <td>adsf</td>
+        <td>adsf</td>
+        <td>adsf</td>
+    </tr>
+    <tr>
+        <td>adsf</td>
+        <td>adsf</td>
+        <td>adsf</td>
+    </tr>
+</table>
+=======
+>>>>>>> df54e889fa8ce7e32530238347fe9c58765b5b31
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./js/cm-frame.css">
+    <script type="text/javascript" src="./js/jquery/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="./js/avalon/avalon-1.5.js"></script>
+    <script type="text/javascript" src="./js/cm-frame.js"></script>
+    <script type="text/javascript" src="./js/bootstrap/bootstrap.js"></script>    
+    <script type="text/javascript" src="./js/customer/neList.js"></script>
+    
+    <script type="text/javascript">    	
+        $(function () {
+        	console.debug("sssssssssssssss");
+        
+        	var dataAreaId = window.location.search.split("dataAreaId=")[1]||0
+        	console.debug("dataAreaId is " + dataAreaId);
+        	
+            requestNeData(dataAreaId);
+            console.debug("vvvvvvvvvvvv");
+        });
+    </script>
+    <title>Title</title>
+</head>
+
+<!-- <link rel="stylesheet" type="text/css" href="./css/customer/activateMain.css"> -->
+<table id="frametable" cellpadding="0" cellspacing="0" width="100%" height="100%" style="width: 100%;">
+    <tr style="border-bottom:solid 1px #CCCCCC;">
+        <td colspan="2" height="6.5%" style="text-align:left ;background:#008ED3; font-size: 20px;color: #ffffff;padding-left: 10px;">NetNumen v0.1
+            <!-- <div class="header">
+                header menu
+            </div> -->
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="18.5%" height="88.5%" style="border-right:solid 2px #CCCCCC;"> <!--这个高度很重要-->
+            <div class="left"><!-- left menu --></div>
+        </td>
+        <td valign="top" width="81.5%" height="88.5%"> <!--这个高度很重要-->
+            <iframe id="iframe" name="main" src="page/activate.html" width="100%" allowtransparency="true" width="100%" height="100%" frameborder="0" scrolling="yes" style="overflow:visible;"></iframe>
+        </td>
+    </tr>
+    <tr style="border-top:solid 1px #CCCCCC; " width="100%">
+    	<td colspan="2" height="5%" style="text-align:center;background:#afafaf;font-size:12px">© 2016-2065 中兴通讯股份有限公司 版权所有</td>
+    </tr>
+</table>
+
+<body>
+</body>
+</html>

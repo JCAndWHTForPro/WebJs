@@ -1,0 +1,25 @@
+.propertyTable{
+	width: 100% !important;
+	height: 100% !important;
+}
+table.propertyTable tr td:first-child{
+	background-color:#DED8D8;
+}
+table.propertyTable tr td{
+	border: 1px solid #928787 !important;
+	text-align:center;
+}
+table.propertyTable tr td input,select{
+	text-align:left;
+	overflow:hidden;
+}
+ul.dropdown-menu li a{
+    padding:5px 1px;
+    text-align:left;
+    overflow:auto;
+
+
+}
+ul.dropdown-menu li a:hover{
+    background:#1E90FF;
+}

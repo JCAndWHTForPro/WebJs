@@ -33,6 +33,10 @@ cm.common.util.WsfTool = {
         }
         cm.common.util.WsfTool.componentidcache[componentName] = cm.common.util.WsfTool.componentidcache[componentName] + 1;
         return componentName + cm.common.util.WsfTool.componentidcache[componentName];
+    },
+    //通过id获取Avalon的viewModel对象
+    getAvalonVMById: function(id){
+        return avalon.vmodels[id];
     }
 
 }

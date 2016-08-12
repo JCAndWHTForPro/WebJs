@@ -1,11 +1,11 @@
-﻿package("cm.wsf.topo");
+﻿package("cm.wsf.topo.planned");
 
 $import("cm.gui.comp.tablePanel.Table");
 $import("cm.common.util.WsfTool");
 
-$importStyle("cm.wsf.topo.PlannedAreaTablePanel");
+$importStyle("cm.wsf.topo.planned.PlannedAreaTablePanel");
 
-cm.wsf.topo.PlannedAreaTablePanel = function(dialog,progress){
+cm.wsf.topo.planned.PlannedAreaTablePanel = function(dialog,progress){
 
 	cm.gui.comp.tablePanel.Table.call(this);
 	var param = {
@@ -187,9 +187,9 @@ cm.wsf.topo.PlannedAreaTablePanel = function(dialog,progress){
 
 }
 
-cm.wsf.topo.PlannedAreaTablePanel.prototype = new cm.gui.comp.tablePanel.Table();
+cm.wsf.topo.planned.PlannedAreaTablePanel.prototype = new cm.gui.comp.tablePanel.Table();
 
-cm.wsf.topo.PlannedAreaTablePanel.prototype.getAllPlanAreaInfo = function(){
+cm.wsf.topo.planned.PlannedAreaTablePanel.prototype.getAllPlanAreaInfo = function(){
 	var plannedAreaTablePanelThis = this;
 	$.ajax({
         url: getAPIPath("cm-plan-area")+"/manage/get",

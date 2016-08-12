@@ -23,7 +23,8 @@ cm.gui.comp.tablePanel.Table = function(param){
 		hasHeader:false,
 		footerContents:'',
 		hasFooter:false,
-		dialogId:''
+		dialogId:'',
+        hasBorder:true
 	};
 
 	if(param!=undefined){
@@ -31,6 +32,8 @@ cm.gui.comp.tablePanel.Table = function(param){
 	}
 
 	this.selfid = cm.common.util.WsfTool.generateId("tablePanel-");
+
+    this.toolbarId = cm.common.util.WsfTool.generateId("tablePanel-toolbar-");
 
 	this.panelHeaderId = cm.common.util.WsfTool.generateId("panelHeader-");
 
@@ -79,11 +82,15 @@ cm.gui.comp.tablePanel.Table = function(param){
 			'</nav>'+
 			'</div>';
 
-	this.html = '<div class="panel panel-primary" ms-controller="'+this.VMID+'">'+
+	this.html = '<div style="width:100%;height:100%;" id="'+this.selfid
+                +'" ms-controller="'+this.VMID+
+                '"><div class="panel panel-primary" ms-class="hasBorder:!param.hasBorder">'+
 				'<div class="panel-heading" id="'+this.panelHeaderId
 				+'" ms-visible="param.hasHeader">'+
 				this.header+'</div>'+
 				'<div class="panel-body panel-body-my">'+
+                '<div id="'+this.toolbarId
+                +'"></div>'+
 				'<table class="table table-bordered tablePanel" id="'+
 				this.tableid+'" >'+
 				'<tr id="'+this.headerTrid+'">'+
@@ -92,7 +99,7 @@ cm.gui.comp.tablePanel.Table = function(param){
 				'</tr>'+
 				'<tr ms-repeat="contents" data-repeat-rendered="tableTrRepeatCallFun"'+
 				' ms-attr-name="{{$index}}" id="'+this.contentTrid+'">'+
-				'<td ms-repeat="el" ms-attr-name="{{$key}}"'+
+				'<td ms-repeat="el" ms-attr-name="{{$key}}" ms-visible="$val.isVisible || $val.isVisible==undefined"'+
 				' data-repeat-rendered="tableTdRepeatCallFun">{{$val|html}}</td>'+
 				'</tr>'+
 				'</table>'+
@@ -101,13 +108,17 @@ cm.gui.comp.tablePanel.Table = function(param){
 				+'" style="text-align:center;padding:10px;"'+
 				' ms-visible="param.hasFooter">'+
 				this.footer+
-				'</div></div>';
+				'</div></div></div>';
 	var registerAvalonPaginationVM = this.registerAvalonPaginationVM;
     this.registerAvalonVMObj = {
 		$id:this.VMID,
+        mocName:"",
+        requstParam:{},
+        parentRequstParam:{},
         header:[],
         param:this.param,
-        contents:[]
+        contents:[],
+        currentSlectedTr:""
     };
     //分页组件上面的视图对象
     this.avalonCallFun = function(vm){
@@ -183,7 +194,7 @@ cm.gui.comp.tablePanel.Table = function(param){
     	var headerHeight = 0;
     	var footerHeight = 0;
     	var contentHeight = 0;
-    	var windowHeight = $(window).height();
+    	var windowHeight = $("#"+this.selfid).height();
     	if(this.param.hasHeader){
     		headerHeight = $("#"+this.panelHeaderId).outerHeight();
     	}
@@ -191,10 +202,23 @@ cm.gui.comp.tablePanel.Table = function(param){
     		footerHeight = $("#"+this.panelFooterId).height();
     	}
     	contentHeight = windowHeight-headerHeight-footerHeight;
-    	$(".panel-body-my").height(contentHeight).css("overflow","auto");
+    	$("#"+this.selfid).find(".panel-body-my").height(contentHeight).css("overflow","auto");
+    }
+
+    this.setTrClickStyle = function(){
+        $("table.tablePanel").find("tr").click(function(event) {
+            if($(this).get(0)==$(this).parent().find(".trSelected").get(0)){
+                return;
+            }
+            $(this).parent().find(".trSelected").removeClass("trSelected");
+            $(this).addClass("trSelected");
+        });
     }
 
     this.addLinkDOMListener(function($this){
+        $(window).resize(function(){
+            $this.resize();
+        });
     	$this.registerAvalonVMObj.param = $this.param;
     	$this.registerAvalonVM = avalon.define($this.registerAvalonVMObj);
     	$this.registerAvalonPaginationVM = avalon.define($this.paginationVMID,$this.avalonCallFun);
@@ -223,4 +247,8 @@ cm.gui.comp.tablePanel.Table.prototype.setTableValue = function(data){
 	if(data!=undefined &&  data instanceof Array){
 		this.registerAvalonVM.contents = data;
 	}
+}
+
+cm.gui.comp.tablePanel.Table.prototype.setToolbar = function(toolbar){
+    toolbar.linkDOM(this.toolbarId);
 }

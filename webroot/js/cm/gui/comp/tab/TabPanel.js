@@ -16,6 +16,7 @@ cm.gui.comp.tab.TabPanel = function () {
 
     var vmID = cm.common.util.WsfTool.generateId(this.selfid+"-avalon-vm-");
 
+
     this.html = "<div ms-controller='"+vmID+"' id='"+this.selfid+"' class='full'>" +
         "<div>" +
         "<ul class='nav nav-tabs'>" +
@@ -48,6 +49,10 @@ cm.gui.comp.tab.TabPanel = function () {
                     $this.innerCompnents[i].hide();
                 }
             }
+            var currentPanel = tabvm.tabpanels[tabvm.currentIndex];
+            if(typeof(currentPanel.changeCallBack)=="function"){
+                currentPanel.changeCallBack($this.getCurrentPanel());
+            }
         },
         closeTab: function(tabindex){
             var panelInfo = tabvm.tabpanels[tabindex];
@@ -74,13 +79,21 @@ cm.gui.comp.tab.TabPanel = function () {
 
     this.addLinkDOMListener(function($this){
         $this.resize(true);
-        tabvm = avalon.define(tabvm);
+        tabvm = tabvm = avalon.define(tabvm);
         avalon.scan();
     });
 
+    this.canActivateTab = function(id){
+        for(var i = 0 ;i < tabvm.tabpanels.length;i++){
+            if(tabvm.tabpanels[i].id==id){
+                this.activate(id);
+                return true;
+            }
+        }
+        return false;
+    }
 
-    this.addPanel = function (id, title, panel,closeable,closecallback) {
-
+    this.addPanel = function (id, title, panel,closeable,closecallback,changeCallBack) {
         for (var i = 0; i < this.innerCompnents.length; i++) {
             if (this.innerCompnents[i] === panel) {
                 return;
@@ -105,7 +118,8 @@ cm.gui.comp.tab.TabPanel = function () {
             title: title,
             panelid: panel.getID(),
             closeable:closeable,
-            closecallback:closecallback
+            closecallback:closecallback,
+            changeCallBack:changeCallBack
         });
         this.activate(id);
     }
@@ -120,6 +134,18 @@ cm.gui.comp.tab.TabPanel = function () {
             }
         }
 
+    }
+
+    this.getCurrentPanel = function(){
+        if(tabvm.currentIndex!=undefined){
+            var panelId = tabvm.tabpanels[tabvm.currentIndex].panelid;
+            for(var i=0;i<this.innerCompnents.length;i++){
+                if(this.innerCompnents[i].getID()==panelId){
+                    return this.innerCompnents[i];
+                }
+            }
+        }
+        return null;
     }
 
 }
@@ -153,3 +179,4 @@ cm.gui.comp.tab.TabPanel.prototype.resize = function(init){
         }
     }
 }
+
