@@ -22,10 +22,9 @@ cm.wsf.topo.NeTreeController = function(mainPanel){
     }
 
     this.requestNeData = function(dataAreaId){
-    	  var target = (dataAreaId==0?"currentArea":"plannedArea");
-    	  console.log("dataAreaId:"+dataAreaId + "  target:" + target)
+    	var target = (dataAreaId==0?"cm-current-area":"cm-plan-area");
         $.ajax({
-            url: "/api/"+target+"/v1/getAllMeData/getTree",
+            url: getAPIPath(target)+"/getAllMeData/getTree",
             type: "GET",
             dataType: "json",
             data:{

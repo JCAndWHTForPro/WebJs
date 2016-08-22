@@ -13,7 +13,7 @@ cm.wsf.topo.MocTreeController = function (mainPanel) {
             return;
         }
         $.ajax({
-            url: "/api/cmModel/v1/getMocTree",
+            url: getAPIPath("cm-model")+"/getMocTree",
             type: "GET",
             dataType: "json",
             data: {

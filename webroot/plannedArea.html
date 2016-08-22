@@ -8,12 +8,13 @@
     <script type="text/javascript" src="./js/jquery/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="./js/avalon/avalon-1.5.js"></script>
     <script type="text/javascript" src="./js/cm-frame.js"></script>
+        <script type="text/javascript" src="./js/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
 
         $import("cm.wsf.topo.MainPanel");
         $import("cm.wsf.topo.MocTreeController");
         $import("cm.wsf.topo.NeTreeController");
-        $import("cm.wsf.topo.TableViewController");
+        $import("cm.wsf.topo.planned.TableViewController");
         $import("cm.gui.comp.tab.TabPanel");
 
         $(function () {
@@ -27,7 +28,7 @@
             var tabPanel = new cm.gui.comp.tab.TabPanel();
             mainPanel.getCenterPanel().setRightComponent(tabPanel);
 
-            var tableViewController = new cm.wsf.topo.TableViewController(tabPanel);
+            var tableViewController = new cm.wsf.topo.planned.TableViewController(tabPanel);
 
             tableViewController.registTreeClickEvent(neTreeController.getNeTree());
 
@@ -36,7 +37,6 @@
             mocTreeController.registNeTreeClickEvent(neTreeController.getNeTree());
   
             var dataAreaId = window.location.search.split("dataAreaId=")[1]||0
-            console.log("dataAreaId:" + dataAreaId)
             neTreeController.requestNeData(dataAreaId);
             $("title").html("PlannedArea"+dataAreaId);
 

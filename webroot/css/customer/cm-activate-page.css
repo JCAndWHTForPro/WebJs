@@ -1,0 +1,149 @@
+.rightcontainer{
+    position: relative;
+    width: 85%;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #FFFFFF;
+}
+.element {
+    margin : 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.north-title{
+    height: 20px;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size:12px;
+    color:gray ;
+}
+
+.button{
+    position: relative;
+    display: inline-block;
+    padding: 4px 12px;
+    overflow: hidden;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    width:100px;
+    text-align:center;
+    font-size:14px;
+    background: #FFFFFF;
+    border: 1px solid #2db6ed;
+    color: #2db6ed;
+}
+.button-disable{
+    background:whitesmoke !important;
+    color:darkgray !important;
+    border: 1px solid darkgray !important;//#abffff
+}
+
+.button:hover {
+    background: #2db6ed;
+    color: white;
+    text-decoration: none;
+}
+
+.button input {
+height: 100%;
+width: 100%;
+position: absolute;
+left: 0px;
+top: 0px;
+opacity: 0;
+border:none;
+}
+.button span {
+    font-size:14px;
+}
+.button:hover {
+    background: #2db6ed;
+    color: white;
+    text-decoration: none;
+}
+
+span.button:active {
+    position: relative;
+    top: 1px;
+    left:1px;
+}
+div.button:active {
+    position: relative;
+    top: 1px;
+    left:1px;
+}
+
+/*表格统一样式*/
+table.common-table{
+    width:920px;
+    height:auto;
+}
+table.common-table td,table.common-table th{
+    height:34px;
+	width:50%;
+    font-size: 12px;  
+    border:none; 
+    margin: 0;  
+    padding: 0;
+    border-bottom:solid 1px #EAEBED;
+    text-align: left;
+    color:dimgray;
+    padding-left: 4px;
+}
+table.common-table th{
+    background:#e9eff2; 
+    font-weight: normal;
+}
+
+/*表格标题统一样式*/
+.table-title{
+    font-size:14px;
+    color:dimgray;
+    margin-bottom: 5px;
+}
+
+/*表格hover*/
+tr:hover{
+    background-color: #f3f7f9;
+}
+
+
+input[type=radio]
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #2DB6ED;
+    top: 4px;
+    background: #fff;
+}
+input[type=radio]:after
+{
+    content:"";
+    position:absolute;
+    width: 6px;
+    height: 3px;
+    top:2px;
+    left:2px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-right:none;
+    transform: rotate(-45deg);
+}
+input[type=radio]:checked
+{
+    background: #2DB6ED;
+}
+input[type=radio]:disabled
+{
+    opacity: 0.2;
+}
+input[type=radio]:focus
+{
+	outline:0;
+}

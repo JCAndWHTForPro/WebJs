@@ -35,31 +35,35 @@ cm.gui.comp.XSeperatorPanel = function(para){
     }
 
     var splitWidth,splitUnit,splitValue,dragable;
-    if(this.para.splitWidth ===0){
-        splitWidth = 0;
-    }else if(this.para.splitWidth){
-        splitWidth = this.para.splitWidth;
-    }else{
-        splitWidth = 3;
-    }
+    this.setLocalParam = function(){
+        if(this.para.splitWidth ===0){
+            splitWidth = 0;
+        }else if(this.para.splitWidth){
+            splitWidth = this.para.splitWidth;
+        }else{
+            splitWidth = 3;
+        }
 
-    if(this.para.splitUnit){
-        splitUnit = this.para.splitUnit;
-    }else{
-        splitUnit = '%';
-    }
+        if(this.para.splitUnit){
+            splitUnit = this.para.splitUnit;
+        }else{
+            splitUnit = '%';
+        }
 
-    if(this.para.splitValue){
-        splitValue = this.para.splitValue;
-    }else{
-        splitValue = 50;
-    }
+        if(this.para.splitValue){
+            splitValue = this.para.splitValue;
+        }else{
+            splitValue = 50;
+        }
 
-    if(this.para.dragable){
-        dragable = this.para.dragable;
-    }else{
-        dragable = false;
+        if(this.para.dragable){
+            dragable = this.para.dragable;
+        }else{
+            dragable = false;
+        }
+        
     }
+    this.setLocalParam();
 
     this.selfid = cm.common.util.WsfTool.generateId("XeperatorPanel-");
 
@@ -118,59 +122,72 @@ cm.gui.comp.XSeperatorPanel = function(para){
         }
     }
 
+    this.resetXSeperator = function(param){
+        for(var o in param){
+            this.para[o] = param[o];
+        }
+        this.setLocalParam();
+        dragableWidthReset(this);
+    }
 
-    this.addLinkDOMListener(function($this){
+    var dragableWidthReset = function($this){
         wrap = $("#"+$this.selfid);
-        labBtn 	  = wrap.find('label').eq(0);
-
+        labBtn = wrap.find('label').eq(0);
         $this.init();
-
         $(window).resize(function(){
             $this.resize();
         });
-
         if (dragable) {
-            labBtn.bind('mousedown', function () {
-                dragging = true;
-                leftOffset = wrap.offset().left;
-            });
-
-            wrap.bind('mousemove', function (e) {
-                if (dragging) {
-                    clickX = e.pageX;
-                    if (clickX > leftOffset && clickX < (leftOffset + wrapWidth - splitWidth)) {
-                        labBtn.css('left', clickX - splitWidth - leftOffset + 'px');//按钮移动
-
-                        labBtn.prev().width(clickX - leftOffset + 'px');
-                        nextW2 = clickX - leftOffset;
-                        labBtn.next().width(wrapWidth - nextW2 - splitWidth + 'px');
-                    } else if (clickX <= leftOffset) {
-                        labBtn.css('left', '0px');
-                        labBtn.prev().width('0px');
-                        labBtn.next().width(wrapWidth - splitWidth + 'px');
-                    } else {
-                        labBtn.css('left', (wrapWidth - splitWidth) + 'px');
-                        labBtn.prev().width((wrapWidth - splitWidth) + 'px');
-                        labBtn.next().width('0px');
-                    }
-
-                    if (splitUnit == '%') {
-                        splitValue = 100 * (clickX - leftOffset) / wrapWidth;
-                    } else {
-                        splitValue = clickX - leftOffset;
-                    }
-
-                    $this.resize(true);
-                }
-            });
-
-            wrap.mouseup(function (e) {
-                dragging = false;
-                e.cancelBubble = true;
-            })
+            bindDragableEvent($this,wrap,labBtn);
+            labBtn.css("cursor","e-resize");
         }else{
             labBtn.css("cursor","default");
         }
+        
+    }
+    var bindDragableEvent = function($this,wrap,labBtn){
+        labBtn.bind('mousedown', function () {
+            dragging = true;
+            leftOffset = wrap.offset().left;
+        });
+
+        wrap.bind('mousemove', function (e) {
+            if (dragging) {
+                clickX = e.pageX;
+                if (clickX > leftOffset && clickX < (leftOffset + wrapWidth - splitWidth)) {
+                    labBtn.css('left', clickX - splitWidth - leftOffset + 'px');//按钮移动
+
+                    labBtn.prev().width(clickX - leftOffset + 'px');
+                    nextW2 = clickX - leftOffset;
+                    labBtn.next().width(wrapWidth - nextW2 - splitWidth + 'px');
+                } else if (clickX <= leftOffset) {
+                    labBtn.css('left', '0px');
+                    labBtn.prev().width('0px');
+                    labBtn.next().width(wrapWidth - splitWidth + 'px');
+                } else {
+                    labBtn.css('left', (wrapWidth - splitWidth) + 'px');
+                    labBtn.prev().width((wrapWidth - splitWidth) + 'px');
+                    labBtn.next().width('0px');
+                }
+
+                if (splitUnit == '%') {
+                    splitValue = 100 * (clickX - leftOffset) / wrapWidth;
+                } else {
+                    splitValue = clickX - leftOffset;
+                }
+
+                $this.resize(true);
+            }
+        });
+
+        wrap.mouseup(function (e) {
+            dragging = false;
+            e.cancelBubble = true;
+        });
+    }
+
+    this.addLinkDOMListener(function($this){
+        dragableWidthReset($this);
     });
 }
 

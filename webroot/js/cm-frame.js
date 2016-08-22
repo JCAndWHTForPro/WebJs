@@ -1,4 +1,11 @@
 $("head").append("<script src='./js/cm-i18n.js'></script>");
+
+/**
+ * MSB注册代理路径
+ */
+var getAPIPath = function(serviceName){
+	return "/api/"+serviceName+"/v1";
+}
 /**
  * 定义包的命名空间
  * @param module

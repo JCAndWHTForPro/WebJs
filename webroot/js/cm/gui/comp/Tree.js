@@ -23,11 +23,12 @@ cm.gui.comp.Tree = function(){
 
 	this.bindEvent = function($this){
 		$this.getTree().on('nodeSelected',function(event,data){
+			var parent = $this.getParent(data);
 			if(typeof($this.treeEvent["dblclick"]) != 'undefined'){
 				for(var i = 0 ;i <$this.treeEvent["dblclick"].length;i++){
 					var listener = $this.treeEvent["dblclick"][i];
 					try{
-						listener($this,data);
+						listener($this,data,parent);
 					}catch(e){
 
 					}
@@ -36,7 +37,7 @@ cm.gui.comp.Tree = function(){
 				for(var i = 0 ;i <$this.treeEvent["click"].length;i++){
 					var listener = $this.treeEvent["click"][i];
 					try{
-						listener($this,data);
+						listener($this,data,parent);
 					}catch(e){
 
 					}
@@ -81,4 +82,8 @@ cm.gui.comp.Tree.prototype.showTree = function(){
 		highlightSelected:true
 	});
 	this.bindEvent(this);
+}
+
+cm.gui.comp.Tree.prototype.getParent = function(node){
+	return $("#"+this.treeId).treeview("getParent",node);
 }

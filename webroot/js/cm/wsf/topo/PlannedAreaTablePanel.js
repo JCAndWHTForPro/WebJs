@@ -58,11 +58,11 @@ cm.wsf.topo.PlannedAreaTablePanel = function(dialog,progress){
 	this.registerAvalonVMObj.openBtnClick = function(){
 		progress.show();
 		$.ajax({
-            url: plannedAreaPanelThis.url+"api/planArea/v1/manage/create",
+            url: getAPIPath("cm-plan-area")+"/manage/create",
             type: "GET",
             dataType: "json",
             success:function(data){
-				$.cometd.init(window.location.protocol + "//"+window.location.hostname+":8084/cometd");
+//				$.cometd.init(window.location.protocol + "//"+window.location.hostname+":8084/cometd");
                 var cometPath = data.cometPath;
                 progress.subscribe(cometPath,function(jsonResult){
                 	if(jsonResult.status=="2"){
@@ -102,7 +102,7 @@ cm.wsf.topo.PlannedAreaTablePanel = function(dialog,progress){
 			planAreaId:trEl.find("[name='ID']").text(),
 			openBtnClick:function(){
 				$.ajax({
-		            url: plannedAreaPanelThis.url+"api/planArea/v1/manage/open",
+		            url: getAPIPath("cm-plan-area")+"/manage/open",
 		            type: "GET",
 		            dataType: "json",
 		            data:{"dataAreaId":innerTRVM.planAreaId},
@@ -129,7 +129,7 @@ cm.wsf.topo.PlannedAreaTablePanel = function(dialog,progress){
 		        var deleteArrIndex = parseInt($(this).parent().parent().attr("name"));
 				//删除事件回调
 				$.ajax({
-		            url: plannedAreaPanelThis.url+"api/planArea/v1/manage/delete",
+		            url: getAPIPath("cm-plan-area")+"/manage/delete",
 		            type: "GET",
 		            dataType: "json",
 		            data:{"dataAreaId":innerTRVM.planAreaId},
@@ -149,12 +149,12 @@ cm.wsf.topo.PlannedAreaTablePanel = function(dialog,progress){
 			viewBtnClick:function(){
 				//查看事件回调
 				// console.log("open:" + "/web/plannedArea.html?dataAreaId="+innerTRVM.planAreaId )
-				window.open("/web/plannedArea.html?dataAreaId="+innerTRVM.planAreaId);
+				window.open("plannedArea.html?dataAreaId="+innerTRVM.planAreaId);
 			},
 			closeBtnClick:function(){
 				//关闭事件回调
 				$.ajax({
-		            url: plannedAreaPanelThis.url+"api/planArea/v1/manage/close",
+		            url: getAPIPath("cm-plan-area")+"/manage/close",
 		            type: "GET",
 		            dataType: "json",
 		            data:{"dataAreaId":innerTRVM.planAreaId},
@@ -192,7 +192,7 @@ cm.wsf.topo.PlannedAreaTablePanel.prototype = new cm.gui.comp.tablePanel.Table()
 cm.wsf.topo.PlannedAreaTablePanel.prototype.getAllPlanAreaInfo = function(){
 	var plannedAreaTablePanelThis = this;
 	$.ajax({
-        url: plannedAreaTablePanelThis.url+"api/planArea/v1/manage/get",
+        url: getAPIPath("cm-plan-area")+"/manage/get",
         type: "GET",
         dataType: "json",
         success:function(data){

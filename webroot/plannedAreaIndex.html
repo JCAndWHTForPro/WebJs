@@ -7,14 +7,17 @@
 	<title>PlannedArea Management</title>
     <script type="text/javascript" src="./js/jquery/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="./js/cometd/cometd.js"></script>
-        <script type="text/javascript" src="./js/cometd/jquery.cometd.js"></script>
+    <script type="text/javascript" src="./js/cometd/jquery.cometd.js"></script>
     <script type="text/javascript" src="./js/avalon/avalon.js"></script>
     <script type="text/javascript" src="./js/cm-frame.js"></script>
+    <script type="text/javascript" src="./js/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
         $import("cm.wsf.topo.PlannedAreaTablePanel");
         $import("cm.gui.comp.Dialog");
         $import("cm.gui.comp.Progress");
         $(function(){
+        	var cometPath = window.location.protocol + "//"+window.location.hostname+":"+window.location.port+getAPIPath("cm-plan-area")+"/cometd";
+        	$.cometd.init(cometPath);
             //将进度条添加到DOM中
             var progress = new cm.gui.comp.Progress();
             progress.linkDOM("container");

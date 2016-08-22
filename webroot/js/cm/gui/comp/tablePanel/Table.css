@@ -1,6 +1,12 @@
 .tablePanel{
     margin:0 !important;
 }
+table.tablePanel tr:hover{
+	background:#E2EFF8;
+}
+table.tablePanel tr:active{
+	background:#C1DDF1;
+}
 table.tablePanel tr td,th{
 	text-align:center;
 	border:1px solid #928787 !important;
@@ -18,4 +24,10 @@ table.tablePanel tr th{
 .container{
 	height:100%;
 	overflow:auto;
+}
+.hasBorder{
+	border:0 !important;
+}
+.trSelected{
+    background:#C1DDF1;
 }

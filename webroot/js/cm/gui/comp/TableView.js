@@ -1,69 +1,79 @@
 package("cm.gui.comp");
 
 $import("cm.common.util.WsfTool");
-$import("cm.gui.comp.Component");
+$import("cm.gui.comp.tablePanel.Table");
 
 $importStyle('cm.gui.comp.TableView');
 
 cm.gui.comp.TableView = function (isTest) {
-    cm.gui.comp.Component.call(this);
-    this.selfid = cm.common.util.WsfTool.generateId("tableview-");
-    this.html = "<div class='full' style='overflow: auto' ms-controller='" + this.selfid + "'>" +
-        "<table class='table'>" +
-        "<thead id='table-head'>" +
-        "<tr ms-visible='cmTableHead.length != 0'>" +
-        "<td ms-repeat='cmTableHead'>{{el}}</td>" +
-        "</tr>" +
-        "</thead>" +
-        "<tbody id='table-body'>" +
-        "<tr ms-click='changeTableStyleAfterSelected($index)' ms-class='{{changeTableStyleByRowIndex($index)}}' ms-visible='isShowTableBody($index)' ms-repeat='cmTableBody'>" +
-        "<td ms-repeat-elem='el'>{{elem}}</td>" +
-        "</tr>" +
-        "</tbody>" +
-        "</table>" +
-        "</div>";
+    cm.gui.comp.tablePanel.Table.call(this);
+    var param = {
+        hasHeader:false,
+        hasFooter:false,
+        hasBorder:false
+    }
+    for(var o in param){
+        this.param[o] = param[o];
+    }
+    this.trCallFunArr = [];
+    this.xPanelObjArr = [];
 
-    var tablemodel = {
-        $id: this.selfid,
-        cmTableHead: [],
-        cmTableBody: [],
-        
-        //isShowTableHead: function(rowIndex){
-        //	if(rowIndex >= 0){
-        //		return true;
-        //	}
-        //	return false;
-        //},
-        
-        isShowTableBody: function(rowIndex){
-        	if(rowIndex >= 0){
-        		return true;
-        	}
-        	return false;
-        },
-        
-        changeTableStyleAfterSelected: function(rowIndex){
-        	$(this).addClass("after-selected");
-        },
-        
-        changeTableStyleByRowIndex: function(rowIndex){
-        	if(rowIndex % 2 == 0){
-        		return "odd-row";
-        	}else{
-        		return "even-row";
-        	}
-        }
-    };
  
-    this.addLinkDOMListener(function () {
-    	tablemodel = avalon.define(tablemodel);
-        avalon.scan();
-    });
+    var tableViewThis = this;
 
-    this.getTableView = function (){
-    	return tablemodel;
+    this.registerAvalonVMObj.tableThRepeatCallFun = function(){
+        var thArr = $(this).children('th');
+        for(var i=0;i<thArr.length;i++){
+            var thJquery = $(thArr[i]);
+            if(thJquery.text()=="moIdentify"){
+                thJquery.remove();
+            }
+        }
+    }
+
+    this.registerAvalonVMObj.tableTdRepeatCallFun = function(){
+        $(this).find("[name='moIdentify']").remove();
+        tableViewThis.setHeight();
+        tableViewThis.setTrClickStyle();
+
+        var tableVm = cm.common.util.WsfTool.getAvalonVMById(tableViewThis.VMID);
+
+        $("#"+tableViewThis.selfid).find("tr").click(function(event) {
+            tableVm.currentSlectedTr = $(this).attr("name");
+            for(var i=0;i<tableViewThis.trCallFunArr.length;i++){
+                tableViewThis.trCallFunArr[i](tableViewThis.getSelectedValue(),tableViewThis.xPanelObjArr[i],"trClick");
+            }
+        });
+    }
+
+    this.registerTableViewTrClick = function(xPanel,fun){
+        this.xPanelObjArr.push(xPanel);
+        this.trCallFunArr.push(fun)
     }
     
 }
 
-cm.gui.comp.TableView.prototype = new cm.gui.comp.Component();
+cm.gui.comp.TableView.prototype = new cm.gui.comp.tablePanel.Table();
+
+cm.gui.comp.TableView.prototype.dealData = function(data){
+    var header = data.fieldNames;
+    var valueList = data.fieldValueList;
+    this.setTableHeader(header);
+    var result = [];
+    for(var i = 0;i<valueList.length;i++){
+        var resultObj = {};
+        var values = valueList[i];
+        for(var j=0;j<values.length;j++){
+            resultObj[header[j]] = values[j];
+        }
+        result.push(resultObj);
+    }
+    this.setTableValue(result);
+}
+
+cm.gui.comp.TableView.prototype.getSelectedValue = function(){
+    var selectInde = parseInt(this.registerAvalonVM.currentSlectedTr);
+    var result = this.registerAvalonVM.contents[selectInde].$model;
+    return result;
+}
+
