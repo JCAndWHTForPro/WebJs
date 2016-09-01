@@ -1,0 +1,6 @@
+第一条配置：
+wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
+第二条配置：
+echo deb http://download.ceph.com/debian-jewel/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
+第三条配置：
+apt-get update && sudo apt-get install ceph-deploy
