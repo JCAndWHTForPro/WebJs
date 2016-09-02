@@ -745,3 +745,19 @@ root@jicheng-Lenovo:~/my-cluster# ceph-deploy mon create-initial
 [ceph_deploy.mon][ERROR ] node1
 
 root@jicheng-Lenovo:~/my-cluster#
+============================================================================================================================
+解决办法1：
+vim /etc/ceph/ceph.conf
+[global]
+fsid = 0a91b62e-cd43-4558-9ebd-4719f830cf8b
+mon_initial_members = mon1,mon2,mon3
+mon_host = 192.168.33.30,192.168.33.31,192.168.33.32
+auth_supported = cephx
+osd_journal_size = 1024
+filestore_xattr_use_omap = true
+public_network = 192.168.0.0/24
+加入public_network
+
+
+
+
