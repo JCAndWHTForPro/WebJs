@@ -14,750 +14,249 @@ configuration supported for the full lifetime of the LTS will become
 available on 2016-07-21 and can be installed by running 'update-manager'
 in the Dash.
 
-Last login: Fri Sep  2 23:57:48 2016 from node1
-root@jicheng-Lenovo:~# ll
-总用量 84
-drwx------ 13 root root 4096  9月  3 00:09 ./
-drwxr-xr-x 23 root root 4096  9月  2 17:53 ../
--rw-------  1 root root 2907  9月  3 02:48 .bash_history
--rw-r--r--  1 root root 3106  9月  2 18:31 .bashrc
-drwx------  4 root root 4096  9月  2 19:31 .cache/
--rw-r--r--  1 root root 1077  9月  3 00:04 .cephdeploy.conf
-drwxr-xr-x  6 root root 4096  9月  2 20:07 .config/
-drwx------  3 root root 4096  9月  2 18:50 .dbus/
-drwxr-xr-x  2 root root 4096  9月  2 18:50 Desktop/
-drwx------  3 root root 4096  9月  2 23:26 .gconf/
-drwx------  3 root root 4096  9月  2 18:50 .local/
-drwx------  4 root root 4096  9月  2 19:03 .mozilla/
-drwxr-xr-x  2 root root 4096  9月  3 00:08 my-cluster/
--rw-r--r--  1 root root  140  2月 20  2014 .profile
--rw-r--r--  1 root root 1645 10月 16  2015 release.asc
-drwx------  2 root root 4096  9月  3 00:02 .ssh/
--rw-------  1 root root 4656  9月  3 00:08 .viminfo
-drwxr-xr-x  2 root root 4096  9月  2 23:26 .vnc/
--rw-------  1 root root  108  9月  2 23:26 .Xauthority
-drwx------  2 root root 4096  9月  2 19:03 下载/
-root@jicheng-Lenovo:~# ls
-Desktop  my-cluster  release.asc  下载
-root@jicheng-Lenovo:~# cd my-cluster/
-root@jicheng-Lenovo:~/my-cluster# ll
-总用量 236
-drwxr-xr-x  2 root root   4096  9月  3 00:08 ./
-drwx------ 13 root root   4096  9月  3 00:09 ../
--rw-r--r--  1 root root    220  9月  3 00:08 ceph.conf
--rw-r--r--  1 root root 219506  9月  3 02:16 ceph-deploy-ceph.log
--rw-------  1 root root     73  9月  3 00:04 ceph.mon.keyring
-root@jicheng-Lenovo:~/my-cluster# ceph-deploy install node2
-[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
-[ceph_deploy.cli][INFO  ] Invoked (1.5.34): /usr/bin/ceph-deploy install node2
-[ceph_deploy.cli][INFO  ] ceph-deploy options:
-[ceph_deploy.cli][INFO  ]  verbose                       : False
-[ceph_deploy.cli][INFO  ]  testing                       : None
-[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7fd56ca88638>
-[ceph_deploy.cli][INFO  ]  cluster                       : ceph
-[ceph_deploy.cli][INFO  ]  dev_commit                    : None
-[ceph_deploy.cli][INFO  ]  install_mds                   : False
-[ceph_deploy.cli][INFO  ]  stable                        : None
-[ceph_deploy.cli][INFO  ]  default_release               : False
-[ceph_deploy.cli][INFO  ]  username                      : None
-[ceph_deploy.cli][INFO  ]  adjust_repos                  : True
-[ceph_deploy.cli][INFO  ]  func                          : <function install at 0x7fd56d34be60>
-[ceph_deploy.cli][INFO  ]  install_all                   : False
-[ceph_deploy.cli][INFO  ]  repo                          : False
-[ceph_deploy.cli][INFO  ]  host                          : ['node2']
-[ceph_deploy.cli][INFO  ]  install_rgw                   : False
-[ceph_deploy.cli][INFO  ]  install_tests                 : False
-[ceph_deploy.cli][INFO  ]  repo_url                      : None
-[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
-[ceph_deploy.cli][INFO  ]  install_osd                   : False
-[ceph_deploy.cli][INFO  ]  version_kind                  : stable
-[ceph_deploy.cli][INFO  ]  install_common                : False
-[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
-[ceph_deploy.cli][INFO  ]  quiet                         : False
-[ceph_deploy.cli][INFO  ]  dev                           : master
-[ceph_deploy.cli][INFO  ]  local_mirror                  : None
-[ceph_deploy.cli][INFO  ]  release                       : None
-[ceph_deploy.cli][INFO  ]  install_mon                   : False
-[ceph_deploy.cli][INFO  ]  gpg_url                       : None
-[ceph_deploy.install][DEBUG ] Installing stable version jewel on cluster ceph hosts node2
-[ceph_deploy.install][DEBUG ] Detecting platform for host node2 ...
-[node2][DEBUG ] connected to host: node2
-[node2][DEBUG ] detect platform information from remote host
-[node2][DEBUG ] detect machine type
-[node2][DEBUG ] find the location of an executable
-[node2][INFO  ] Running command: /sbin/initctl version
-[ceph_deploy.install][INFO  ] Distro info: Ubuntu 14.04 trusty
-[node2][INFO  ] installing Ceph on node2
-[node2][INFO  ] Running command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install ca-certificates apt-transport-https
-[node2][DEBUG ] 正在读取软件包列表...
-[node2][DEBUG ] 正在分析软件包的依赖关系树...
-[node2][DEBUG ] 正在读取状态信息...
-[node2][DEBUG ] ca-certificates 已经是最新的版本了。
-[node2][DEBUG ] apt-transport-https 已经是最新的版本了。
-[node2][DEBUG ] 升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 383 个软件包未被升级。
-[node2][INFO  ] Running command: wget -O release.asc https://download.ceph.com/keys/release.asc
-[node2][WARNIN] --2016-09-03 02:44:28--  https://download.ceph.com/keys/release.asc
-[node2][WARNIN] 正在解析主机 proxy.zte.com.cn (proxy.zte.com.cn)... 10.3.76.8
-[node2][WARNIN] 正在连接 proxy.zte.com.cn (proxy.zte.com.cn)|10.3.76.8|:80... 已连接。
-[node2][WARNIN] 已发出 Proxy 请求，正在等待回应... 200 OK
-[node2][WARNIN] 长度： 1645 (1.6K) [application/octet-stream]
-[node2][WARNIN] 正在保存至: “release.asc”
-[node2][WARNIN]
-[node2][WARNIN]      0K .                                                     100%  307M=0s
-[node2][WARNIN]
-[node2][WARNIN] 2016-09-03 02:44:31 (307 MB/s) - 已保存 “release.asc” [1645/1645])
-[node2][WARNIN]
-[node2][INFO  ] Running command: apt-key add release.asc
-[node2][DEBUG ] OK
-[node2][DEBUG ] add deb repo to /etc/apt/sources.list.d/
-[node2][INFO  ] Running command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q update
-[node2][DEBUG ] 忽略 http://mirrors.163.com trusty InRelease
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security InRelease
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates InRelease
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed InRelease
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports InRelease
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty Release.gpg
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/main Sources
-[node2][DEBUG ] 命中 https://download.ceph.com trusty InRelease
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/restricted Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/universe Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/multiverse Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/main amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/restricted amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/universe amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/multiverse amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/main i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/restricted i386 Packages
-[node2][DEBUG ] 命中 https://download.ceph.com trusty/main amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/universe i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/multiverse i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/main Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/multiverse Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/restricted Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-security/universe Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/main Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/restricted Sources
-[node2][DEBUG ] 命中 https://download.ceph.com trusty/main i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/universe Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/multiverse Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/main amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/restricted amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/universe amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/multiverse amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/main i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/restricted i386 Packages
-[node2][DEBUG ] 获取：1 https://download.ceph.com trusty/main Translation-zh_CN
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/universe i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/multiverse i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/main Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/multiverse Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/restricted Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-updates/universe Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/main Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/restricted Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/universe Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/multiverse Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/main amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/restricted amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/universe amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/multiverse amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/main i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/restricted i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/universe i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/multiverse i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/main Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/multiverse Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/restricted Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/universe Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/main Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/restricted Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/universe Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/multiverse Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/main amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/restricted amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/universe amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/multiverse amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/main i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/restricted i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/universe i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/multiverse i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/main Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/multiverse Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/restricted Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty-backports/universe Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty Release
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/main Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/restricted Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/universe Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse Sources
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/main amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/restricted amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/universe amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse amd64 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/main i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/restricted i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/universe i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse i386 Packages
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/main Translation-zh_CN
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/main Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse Translation-zh_CN
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/restricted Translation-zh_CN
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/restricted Translation-en
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/universe Translation-zh_CN
-[node2][DEBUG ] 命中 http://mirrors.163.com trusty/universe Translation-en
-[node2][DEBUG ] 忽略 http://mirrors.163.com trusty/main Translation-zh
-[node2][DEBUG ] 忽略 http://mirrors.163.com trusty/multiverse Translation-zh
-[node2][DEBUG ] 忽略 http://mirrors.163.com trusty/restricted Translation-zh
-[node2][DEBUG ] 忽略 http://mirrors.163.com trusty/universe Translation-zh
-[node2][DEBUG ] 忽略 https://download.ceph.com trusty/main Translation-zh_CN
-[node2][DEBUG ] 忽略 https://download.ceph.com trusty/main Translation-zh
-[node2][DEBUG ] 忽略 https://download.ceph.com trusty/main Translation-en
-[node2][DEBUG ] 正在读取软件包列表...
-[node2][INFO  ] Running command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install -o Dpkg::Options::=--force-confnew ceph ceph-mds radosgw
-[node2][DEBUG ] 正在读取软件包列表...
-[node2][DEBUG ] 正在分析软件包的依赖关系树...
-[node2][DEBUG ] 正在读取状态信息...
-[node2][DEBUG ] ceph 已经是最新的版本了。
-[node2][DEBUG ] ceph-mds 已经是最新的版本了。
-[node2][DEBUG ] radosgw 已经是最新的版本了。
-[node2][DEBUG ] 升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 383 个软件包未被升级。
-[node2][INFO  ] Running command: ceph --version
-[node2][DEBUG ] ceph version 10.2.2 (45107e21c568dd033c2f0a3107dec8f0b0e58374)
-root@jicheng-Lenovo:~/my-cluster# ceph --version
-ceph version 10.2.2 (45107e21c568dd033c2f0a3107dec8f0b0e58374)
-root@jicheng-Lenovo:~/my-cluster# ceph-deploy install node3
-[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
-[ceph_deploy.cli][INFO  ] Invoked (1.5.34): /usr/bin/ceph-deploy install node3
-[ceph_deploy.cli][INFO  ] ceph-deploy options:
-[ceph_deploy.cli][INFO  ]  verbose                       : False
-[ceph_deploy.cli][INFO  ]  testing                       : None
-[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7fd13ef77638>
-[ceph_deploy.cli][INFO  ]  cluster                       : ceph
-[ceph_deploy.cli][INFO  ]  dev_commit                    : None
-[ceph_deploy.cli][INFO  ]  install_mds                   : False
-[ceph_deploy.cli][INFO  ]  stable                        : None
-[ceph_deploy.cli][INFO  ]  default_release               : False
-[ceph_deploy.cli][INFO  ]  username                      : None
-[ceph_deploy.cli][INFO  ]  adjust_repos                  : True
-[ceph_deploy.cli][INFO  ]  func                          : <function install at 0x7fd13f83ae60>
-[ceph_deploy.cli][INFO  ]  install_all                   : False
-[ceph_deploy.cli][INFO  ]  repo                          : False
-[ceph_deploy.cli][INFO  ]  host                          : ['node3']
-[ceph_deploy.cli][INFO  ]  install_rgw                   : False
-[ceph_deploy.cli][INFO  ]  install_tests                 : False
-[ceph_deploy.cli][INFO  ]  repo_url                      : None
-[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
-[ceph_deploy.cli][INFO  ]  install_osd                   : False
-[ceph_deploy.cli][INFO  ]  version_kind                  : stable
-[ceph_deploy.cli][INFO  ]  install_common                : False
-[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
-[ceph_deploy.cli][INFO  ]  quiet                         : False
-[ceph_deploy.cli][INFO  ]  dev                           : master
-[ceph_deploy.cli][INFO  ]  local_mirror                  : None
-[ceph_deploy.cli][INFO  ]  release                       : None
-[ceph_deploy.cli][INFO  ]  install_mon                   : False
-[ceph_deploy.cli][INFO  ]  gpg_url                       : None
-[ceph_deploy.install][DEBUG ] Installing stable version jewel on cluster ceph hosts node3
-[ceph_deploy.install][DEBUG ] Detecting platform for host node3 ...
-[node3][DEBUG ] connected to host: node3
-[node3][DEBUG ] detect platform information from remote host
-[node3][DEBUG ] detect machine type
-[node3][DEBUG ] find the location of an executable
-[node3][INFO  ] Running command: /sbin/initctl version
-[ceph_deploy.install][INFO  ] Distro info: Ubuntu 14.04 trusty
-[node3][INFO  ] installing Ceph on node3
-[node3][INFO  ] Running command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install ca-certificates apt-transport-https
-[node3][DEBUG ] 正在读取软件包列表...
-[node3][DEBUG ] 正在分析软件包的依赖关系树...
-[node3][DEBUG ] 正在读取状态信息...
-[node3][DEBUG ] ca-certificates 已经是最新的版本。
-[node3][DEBUG ] ca-certificates 被设置为手动安装。
-[node3][DEBUG ] apt-transport-https 已经是最新的版本。
-[node3][DEBUG ] 下列软件包是自动安装的并且现在不需要了：
-[node3][DEBUG ]   libntdb1 python-ntdb
-[node3][DEBUG ] Use 'apt-get autoremove' to remove them.
-[node3][DEBUG ] 升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 7 个软件包未被升级。
-[node3][INFO  ] Running command: wget -O release.asc https://download.ceph.com/keys/release.asc
-[node3][WARNIN] --2016-09-03 10:51:04--  https://download.ceph.com/keys/release.asc
-[node3][WARNIN] 正在解析主机 proxy.zte.com.cn (proxy.zte.com.cn)... 10.3.76.8
-[node3][WARNIN] 正在连接 proxy.zte.com.cn (proxy.zte.com.cn)|10.3.76.8|:80... 已连接。
-[node3][WARNIN] 已发出 Proxy 请求，正在等待回应... 200 OK
-[node3][WARNIN] 长度： 1645 (1.6K) [application/octet-stream]
-[node3][WARNIN] 正在保存至: “release.asc”
-[node3][WARNIN]
-[node3][WARNIN]      0K .                                                     100%  391M=0s
-[node3][WARNIN]
-[node3][WARNIN] 2016-09-03 10:51:09 (391 MB/s) - 已保存 “release.asc” [1645/1645])
-[node3][WARNIN]
-[node3][INFO  ] Running command: apt-key add release.asc
-[node3][DEBUG ] OK
-[node3][DEBUG ] add deb repo to /etc/apt/sources.list.d/
-[node3][INFO  ] Running command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q update
-[node3][DEBUG ] 忽略 http://mirrors.163.com trusty InRelease
-[node3][DEBUG ] 获取：1 http://mirrors.163.com trusty-security InRelease [65.9 kB]
-[node3][DEBUG ] 获取：2 http://mirrors.163.com trusty-updates InRelease [65.9 kB]
-[node3][DEBUG ] 获取：3 http://mirrors.163.com trusty-proposed InRelease [65.9 kB]
-[node3][DEBUG ] 获取：4 http://mirrors.163.com trusty-backports InRelease [65.9 kB]
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty Release.gpg
-[node3][DEBUG ] 获取：5 http://mirrors.163.com trusty-security/main Sources [119 kB]
-[node3][DEBUG ] 获取：6 http://mirrors.163.com trusty-security/restricted Sources [4,064 B]
-[node3][DEBUG ] 获取：7 http://mirrors.163.com trusty-security/universe Sources [41.5 kB]
-[node3][DEBUG ] 获取：8 http://mirrors.163.com trusty-security/multiverse Sources [2,760 B]
-[node3][DEBUG ] 获取：9 http://mirrors.163.com trusty-security/main amd64 Packages [523 kB]
-[node3][DEBUG ] 命中 https://download.ceph.com trusty InRelease
-[node3][DEBUG ] 命中 https://download.ceph.com trusty/main amd64 Packages
-[node3][DEBUG ] 命中 https://download.ceph.com trusty/main i386 Packages
-[node3][DEBUG ] 获取：10 http://mirrors.163.com trusty-security/restricted amd64 Packages [13.0 kB]
-[node3][DEBUG ] 获取：11 http://mirrors.163.com trusty-security/universe amd64 Packages [136 kB]
-[node3][DEBUG ] 获取：12 https://download.ceph.com trusty/main Translation-zh_CN
-[node3][DEBUG ] 获取：13 http://mirrors.163.com trusty-security/multiverse amd64 Packages [4,990 B]
-[node3][DEBUG ] 获取：14 http://mirrors.163.com trusty-security/main i386 Packages [487 kB]
-[node3][DEBUG ] 获取：15 http://mirrors.163.com trusty-security/restricted i386 Packages [12.7 kB]
-[node3][DEBUG ] 获取：16 http://mirrors.163.com trusty-security/universe i386 Packages [136 kB]
-[node3][DEBUG ] 获取：17 http://mirrors.163.com trusty-security/multiverse i386 Packages [5,178 B]
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-security/main Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-security/multiverse Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-security/restricted Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-security/universe Translation-en
-[node3][DEBUG ] 获取：18 http://mirrors.163.com trusty-updates/main Sources [380 kB]
-[node3][DEBUG ] 获取：19 http://mirrors.163.com trusty-updates/restricted Sources [5,360 B]
-[node3][DEBUG ] 获取：20 http://mirrors.163.com trusty-updates/universe Sources [163 kB]
-[node3][DEBUG ] 获取：21 http://mirrors.163.com trusty-updates/multiverse Sources [7,137 B]
-[node3][DEBUG ] 获取：22 http://mirrors.163.com trusty-updates/main amd64 Packages [888 kB]
-[node3][DEBUG ] 忽略 https://download.ceph.com trusty/main Translation-zh_CN
-[node3][DEBUG ] 忽略 https://download.ceph.com trusty/main Translation-zh
-[node3][DEBUG ] 获取：23 http://mirrors.163.com trusty-updates/restricted amd64 Packages [15.9 kB]
-[node3][DEBUG ] 获取：24 http://mirrors.163.com trusty-updates/universe amd64 Packages [373 kB]
-[node3][DEBUG ] 忽略 https://download.ceph.com trusty/main Translation-en
-[node3][DEBUG ] 获取：25 http://mirrors.163.com trusty-updates/multiverse amd64 Packages [14.8 kB]
-[node3][DEBUG ] 获取：26 http://mirrors.163.com trusty-updates/main i386 Packages [851 kB]
-[node3][DEBUG ] 获取：27 http://mirrors.163.com trusty-updates/restricted i386 Packages [15.6 kB]
-[node3][DEBUG ] 获取：28 http://mirrors.163.com trusty-updates/universe i386 Packages [375 kB]
-[node3][DEBUG ] 获取：29 http://mirrors.163.com trusty-updates/multiverse i386 Packages [15.2 kB]
-[node3][DEBUG ] 获取：30 http://mirrors.163.com trusty-updates/main Translation-en [430 kB]
-[node3][DEBUG ] 获取：31 http://mirrors.163.com trusty-updates/multiverse Translation-en [7,661 B]
-[node3][DEBUG ] 获取：32 http://mirrors.163.com trusty-updates/restricted Translation-en [3,699 B]
-[node3][DEBUG ] 获取：33 http://mirrors.163.com trusty-updates/universe Translation-en [197 kB]
-[node3][DEBUG ] 获取：34 http://mirrors.163.com trusty-proposed/main Sources [121 kB]
-[node3][DEBUG ] 获取：35 http://mirrors.163.com trusty-proposed/restricted Sources [28 B]
-[node3][DEBUG ] 获取：36 http://mirrors.163.com trusty-proposed/universe Sources [17.9 kB]
-[node3][DEBUG ] 获取：37 http://mirrors.163.com trusty-proposed/multiverse Sources [28 B]
-[node3][DEBUG ] 获取：38 http://mirrors.163.com trusty-proposed/main amd64 Packages [114 kB]
-[node3][DEBUG ] 获取：39 http://mirrors.163.com trusty-proposed/restricted amd64 Packages [28 B]
-[node3][DEBUG ] 获取：40 http://mirrors.163.com trusty-proposed/universe amd64 Packages [17.7 kB]
-[node3][DEBUG ] 获取：41 http://mirrors.163.com trusty-proposed/multiverse amd64 Packages [28 B]
-[node3][DEBUG ] 获取：42 http://mirrors.163.com trusty-proposed/main i386 Packages [110 kB]
-[node3][DEBUG ] 获取：43 http://mirrors.163.com trusty-proposed/restricted i386 Packages [28 B]
-[node3][DEBUG ] 获取：44 http://mirrors.163.com trusty-proposed/universe i386 Packages [17.6 kB]
-[node3][DEBUG ] 获取：45 http://mirrors.163.com trusty-proposed/multiverse i386 Packages [28 B]
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/main Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/multiverse Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/restricted Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-proposed/universe Translation-en
-[node3][DEBUG ] 获取：46 http://mirrors.163.com trusty-backports/main Sources [9,592 B]
-[node3][DEBUG ] 获取：47 http://mirrors.163.com trusty-backports/restricted Sources [28 B]
-[node3][DEBUG ] 获取：48 http://mirrors.163.com trusty-backports/universe Sources [35.2 kB]
-[node3][DEBUG ] 获取：49 http://mirrors.163.com trusty-backports/multiverse Sources [1,898 B]
-[node3][DEBUG ] 获取：50 http://mirrors.163.com trusty-backports/main amd64 Packages [13.3 kB]
-[node3][DEBUG ] 获取：51 http://mirrors.163.com trusty-backports/restricted amd64 Packages [28 B]
-[node3][DEBUG ] 获取：52 http://mirrors.163.com trusty-backports/universe amd64 Packages [43.2 kB]
-[node3][DEBUG ] 获取：53 http://mirrors.163.com trusty-backports/multiverse amd64 Packages [1,571 B]
-[node3][DEBUG ] 获取：54 http://mirrors.163.com trusty-backports/main i386 Packages [13.3 kB]
-[node3][DEBUG ] 获取：55 http://mirrors.163.com trusty-backports/restricted i386 Packages [28 B]
-[node3][DEBUG ] 获取：56 http://mirrors.163.com trusty-backports/universe i386 Packages [43.2 kB]
-[node3][DEBUG ] 获取：57 http://mirrors.163.com trusty-backports/multiverse i386 Packages [1,552 B]
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-backports/main Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-backports/multiverse Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-backports/restricted Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty-backports/universe Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty Release
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/main Sources
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/restricted Sources
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/universe Sources
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse Sources
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/main amd64 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/restricted amd64 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/universe amd64 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse amd64 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/main i386 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/restricted i386 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/universe i386 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse i386 Packages
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/main Translation-zh_CN
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/main Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse Translation-zh_CN
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/multiverse Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/restricted Translation-zh_CN
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/restricted Translation-en
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/universe Translation-zh_CN
-[node3][DEBUG ] 命中 http://mirrors.163.com trusty/universe Translation-en
-[node3][DEBUG ] 忽略 http://mirrors.163.com trusty/main Translation-zh
-[node3][DEBUG ] 忽略 http://mirrors.163.com trusty/multiverse Translation-zh
-[node3][DEBUG ] 忽略 http://mirrors.163.com trusty/restricted Translation-zh
-[node3][DEBUG ] 忽略 http://mirrors.163.com trusty/universe Translation-zh
-[node3][DEBUG ] 下载 6,052 kB，耗时 16秒 (368 kB/s)
-[node3][DEBUG ] 正在读取软件包列表...
-[node3][INFO  ] Running command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install -o Dpkg::Options::=--force-confnew ceph ceph-mds radosgw
-[node3][DEBUG ] 正在读取软件包列表...
-[node3][DEBUG ] 正在分析软件包的依赖关系树...
-[node3][DEBUG ] 正在读取状态信息...
-[node3][DEBUG ] ceph 已经是最新的版本。
-[node3][DEBUG ] ceph-mds 已经是最新的版本。
-[node3][DEBUG ] ceph-mds 被设置为手动安装。
-[node3][DEBUG ] 下列软件包是自动安装的并且现在不需要了：
-[node3][DEBUG ]   libntdb1 python-ntdb
-[node3][DEBUG ] Use 'apt-get autoremove' to remove them.
-[node3][DEBUG ] 下列【新】软件包将被安装：
-[node3][DEBUG ]   radosgw
-[node3][DEBUG ] 升级了 0 个软件包，新安装了 1 个软件包，要卸载 0 个软件包，有 7 个软件包未被升级。
-[node3][DEBUG ] 需要下载 1,226 kB 的软件包。
-[node3][DEBUG ] 解压缩后会消耗掉 1,729 kB 的额外空间。
-[node3][DEBUG ] 获取：1 https://download.ceph.com/debian-jewel/ trusty/main radosgw amd64 10.2.2-1trusty [1,226 kB]
-[node3][DEBUG ] 下载 1,226 kB，耗时 4秒 (287 kB/s)
-[node3][DEBUG ] 正在选中未选择的软件包 radosgw。
-[node3][DEBUG ] (正在读取数据库 ... 系统当前共安装有 175192 个文件和目录。)
-[node3][DEBUG ] 正准备解包 .../radosgw_10.2.2-1trusty_amd64.deb  ...
-[node3][DEBUG ] 正在解包 radosgw (10.2.2-1trusty) ...
-[node3][DEBUG ] 正在处理用于 man-db (2.6.7.1-1ubuntu1) 的触发器 ...
-[node3][DEBUG ] 正在处理用于 ureadahead (0.100.0-16) 的触发器 ...
-[node3][DEBUG ] 正在设置 radosgw (10.2.2-1trusty) ...
-[node3][DEBUG ] radosgw-all start/running
-[node3][DEBUG ] 正在处理用于 ureadahead (0.100.0-16) 的触发器 ...
-[node3][INFO  ] Running command: ceph --version
-[node3][DEBUG ] ceph version 10.2.2 (45107e21c568dd033c2f0a3107dec8f0b0e58374)
-root@jicheng-Lenovo:~/my-cluster# ceph-deploy mon create-initial
-[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
-[ceph_deploy.cli][INFO  ] Invoked (1.5.34): /usr/bin/ceph-deploy mon create-initial
-[ceph_deploy.cli][INFO  ] ceph-deploy options:
-[ceph_deploy.cli][INFO  ]  username                      : None
-[ceph_deploy.cli][INFO  ]  verbose                       : False
-[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
-[ceph_deploy.cli][INFO  ]  subcommand                    : create-initial
-[ceph_deploy.cli][INFO  ]  quiet                         : False
-[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7fbcc1677200>
-[ceph_deploy.cli][INFO  ]  cluster                       : ceph
-[ceph_deploy.cli][INFO  ]  func                          : <function mon at 0x7fbcc16519b0>
-[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
-[ceph_deploy.cli][INFO  ]  default_release               : False
-[ceph_deploy.cli][INFO  ]  keyrings                      : None
-[ceph_deploy.mon][DEBUG ] Deploying mon, cluster ceph hosts node1
-[ceph_deploy.mon][DEBUG ] detecting platform for host node1 ...
-[node1][DEBUG ] connected to host: node1
-[node1][DEBUG ] detect platform information from remote host
-[node1][DEBUG ] detect machine type
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: /sbin/initctl version
-[node1][DEBUG ] find the location of an executable
-[ceph_deploy.mon][INFO  ] distro info: Ubuntu 14.04 trusty
-[node1][DEBUG ] determining if provided host has same hostname in remote
-[node1][DEBUG ] get remote short hostname
-[node1][WARNIN] ********************************************************************************
-[node1][WARNIN] provided hostname must match remote hostname
-[node1][WARNIN] provided hostname: node1
-[node1][WARNIN] remote hostname: jicheng-Lenovo
-[node1][WARNIN] monitors may not reach quorum and create-keys will not complete
-[node1][WARNIN] ********************************************************************************
-[node1][DEBUG ] deploying mon to node1
-[node1][DEBUG ] get remote short hostname
-[node1][DEBUG ] remote hostname: jicheng-Lenovo
-[node1][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
-[node1][DEBUG ] create the mon path if it does not exist
-[node1][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-jicheng-Lenovo/done
-[node1][DEBUG ] done path does not exist: /var/lib/ceph/mon/ceph-jicheng-Lenovo/done
-[node1][INFO  ] creating keyring file: /var/lib/ceph/tmp/ceph-jicheng-Lenovo.mon.keyring
-[node1][DEBUG ] create the monitor keyring file
-[node1][INFO  ] Running command: ceph-mon --cluster ceph --mkfs -i jicheng-Lenovo --keyring /var/lib/ceph/tmp/ceph-jicheng-Lenovo.mon.keyring --setuser 64045 --setgroup 64045
-[node1][DEBUG ] ceph-mon: mon.noname-a 10.9.177.33:6789/0 is local, renaming to mon.jicheng-Lenovo
-[node1][DEBUG ] ceph-mon: set fsid to 2c4763c8-1c91-4fb0-855e-813a840b0042
-[node1][DEBUG ] ceph-mon: created monfs at /var/lib/ceph/mon/ceph-jicheng-Lenovo for mon.jicheng-Lenovo
-[node1][INFO  ] unlinking keyring file /var/lib/ceph/tmp/ceph-jicheng-Lenovo.mon.keyring
-[node1][DEBUG ] create a done file to avoid re-doing the mon deployment
-[node1][DEBUG ] create the init path if it does not exist
-[node1][INFO  ] Running command: initctl emit ceph-mon cluster=ceph id=jicheng-Lenovo
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[node1][WARNIN] monitor: mon.node1, might not be running yet
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[node1][WARNIN] monitor node1 does not exist in monmap
-[node1][WARNIN] neither `public_addr` nor `public_network` keys are defined for monitors
-[node1][WARNIN] monitors may not be able to form quorum
-[ceph_deploy.mon][INFO  ] processing monitor mon.node1
-[node1][DEBUG ] connected to host: node1
-[node1][DEBUG ] detect platform information from remote host
-[node1][DEBUG ] detect machine type
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: /sbin/initctl version
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 5
-[ceph_deploy.mon][WARNIN] waiting 5 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 4
-[ceph_deploy.mon][WARNIN] waiting 10 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 3
-[ceph_deploy.mon][WARNIN] waiting 10 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 2
-[ceph_deploy.mon][WARNIN] waiting 15 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 1
-[ceph_deploy.mon][WARNIN] waiting 20 seconds before retrying
-[ceph_deploy.mon][ERROR ] Some monitors have still not reached quorum:
-[ceph_deploy.mon][ERROR ] node1
+Last login: Wed Sep  7 12:29:24 2016 from 10.9.191.16
+root@node1:~# cd /var/log/
+root@node1:/var/log# cd ceph/
+root@node1:/var/log/ceph# ll
+总用量 48
+drwxrws--T  2 ceph ceph    4096  9月  7 12:01 ./
+drwxrwxr-x 15 root syslog  4096  9月  7 12:01 ../
+-rw-------  1 ceph ceph   11273  9月  7 12:34 ceph.log
+-rw-r--r--  1 ceph ceph   13965  9月  7 12:32 ceph-mon.jicheng-Lenovo.log
+-rw-r--r--  1 ceph ceph   10562  9月  7 12:33 ceph-mon.node1.log
+root@node1:/var/log/ceph# vim ceph.log
+root@node1:/var/log/ceph# ssh node3
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.19.0-25-generic x86_64)
 
-root@jicheng-Lenovo:~/my-cluster#
-root@jicheng-Lenovo:~/my-cluster# ls
-ceph.conf  ceph-deploy-ceph.log  ceph.mon.keyring
-root@jicheng-Lenovo:~/my-cluster# vim ceph.conf
-root@jicheng-Lenovo:~/my-cluster# ceph-deploy mon create-initial
-[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
-[ceph_deploy.cli][INFO  ] Invoked (1.5.34): /usr/bin/ceph-deploy mon create-initial
-[ceph_deploy.cli][INFO  ] ceph-deploy options:
-[ceph_deploy.cli][INFO  ]  username                      : None
-[ceph_deploy.cli][INFO  ]  verbose                       : False
-[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
-[ceph_deploy.cli][INFO  ]  subcommand                    : create-initial
-[ceph_deploy.cli][INFO  ]  quiet                         : False
-[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7f445c417200>
-[ceph_deploy.cli][INFO  ]  cluster                       : ceph
-[ceph_deploy.cli][INFO  ]  func                          : <function mon at 0x7f445c3f19b0>
-[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
-[ceph_deploy.cli][INFO  ]  default_release               : False
-[ceph_deploy.cli][INFO  ]  keyrings                      : None
-[ceph_deploy.mon][DEBUG ] Deploying mon, cluster ceph hosts node1
-[ceph_deploy.mon][DEBUG ] detecting platform for host node1 ...
-[node1][DEBUG ] connected to host: node1
-[node1][DEBUG ] detect platform information from remote host
-[node1][DEBUG ] detect machine type
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: /sbin/initctl version
-[node1][DEBUG ] find the location of an executable
-[ceph_deploy.mon][INFO  ] distro info: Ubuntu 14.04 trusty
-[node1][DEBUG ] determining if provided host has same hostname in remote
-[node1][DEBUG ] get remote short hostname
-[node1][WARNIN] ********************************************************************************
-[node1][WARNIN] provided hostname must match remote hostname
-[node1][WARNIN] provided hostname: node1
-[node1][WARNIN] remote hostname: jicheng-Lenovo
-[node1][WARNIN] monitors may not reach quorum and create-keys will not complete
-[node1][WARNIN] ********************************************************************************
-[node1][DEBUG ] deploying mon to node1
-[node1][DEBUG ] get remote short hostname
-[node1][DEBUG ] remote hostname: jicheng-Lenovo
-[node1][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
-[node1][DEBUG ] create the mon path if it does not exist
-[node1][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-jicheng-Lenovo/done
-[node1][DEBUG ] create a done file to avoid re-doing the mon deployment
-[node1][DEBUG ] create the init path if it does not exist
-[node1][INFO  ] Running command: initctl emit ceph-mon cluster=ceph id=jicheng-Lenovo
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[node1][WARNIN] monitor: mon.node1, might not be running yet
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[node1][WARNIN] monitor node1 does not exist in monmap
-[node1][WARNIN] neither `public_addr` nor `public_network` keys are defined for monitors
-[node1][WARNIN] monitors may not be able to form quorum
-[ceph_deploy.mon][INFO  ] processing monitor mon.node1
-[node1][DEBUG ] connected to host: node1
-[node1][DEBUG ] detect platform information from remote host
-[node1][DEBUG ] detect machine type
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: /sbin/initctl version
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 5
-[ceph_deploy.mon][WARNIN] waiting 5 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 4
-[ceph_deploy.mon][WARNIN] waiting 10 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 3
-[ceph_deploy.mon][WARNIN] waiting 10 seconds before retrying
-^C[ceph_deploy][ERROR ] KeyboardInterrupt
-
-root@jicheng-Lenovo:~/my-cluster# ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-root@jicheng-Lenovo:~/my-cluster# ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-root@jicheng-Lenovo:~/my-cluster# ping node1
-PING node1 (10.9.177.33) 56(84) bytes of data.
-64 bytes from node1 (10.9.177.33): icmp_seq=1 ttl=64 time=0.019 ms
-64 bytes from node1 (10.9.177.33): icmp_seq=2 ttl=64 time=0.037 ms
-64 bytes from node1 (10.9.177.33): icmp_seq=3 ttl=64 time=0.030 ms
-64 bytes from node1 (10.9.177.33): icmp_seq=4 ttl=64 time=0.037 ms
-^X64 bytes from node1 (10.9.177.33): icmp_seq=5 ttl=64 time=0.035 ms
-^C
---- node1 ping statistics ---
-5 packets transmitted, 5 received, 0% packet loss, time 4000ms
-rtt min/avg/max/mdev = 0.019/0.031/0.037/0.009 ms
-root@jicheng-Lenovo:~/my-cluster# ps -ef | grep ceph
-ceph      9504     1  3 02:58 ?        00:00:58 /usr/bin/ceph-mon --cluster=cep  -i jicheng-Lenovo -f --setuser ceph --setgroup ceph
-root      9506     1  0 02:58 ?        00:00:01 /usr/bin/python /usr/sbin/ceph-create-keys --cluster=ceph -i jicheng-Lenovo
-root     14711  9506  0 03:24 ?        00:00:00 /usr/bin/python /usr/bin/ceph --cluster=ceph --admin-daemon=/var/run/ceph/ceph-mon.jicheng-Lenovo.asok mon_status
-root     14713  9199  0 03:24 pts/0    00:00:00 grep --color=auto ceph
-root@jicheng-Lenovo:~/my-cluster# ceph-
-ceph-authtool          ceph-debugpack         ceph-objectstore-tool
-ceph-bluefs-tool       ceph-dencoder          ceph-osd
-ceph-brag              ceph-deploy            ceph-post-file
-ceph-client-debug      ceph-detect-init       ceph-rbdnamer
-ceph-clsinfo           ceph-disk              ceph-rest-api
-ceph-conf              ceph-disk-udev         ceph-run
-ceph-create-keys       ceph-mds               ceph-syn
-ceph-crush-location    ceph-mon
-root@jicheng-Lenovo:~/my-cluster# ceph-
-ceph-authtool          ceph-debugpack         ceph-objectstore-tool
-ceph-bluefs-tool       ceph-dencoder          ceph-osd
-ceph-brag              ceph-deploy            ceph-post-file
-ceph-client-debug      ceph-detect-init       ceph-rbdnamer
-ceph-clsinfo           ceph-disk              ceph-rest-api
-ceph-conf              ceph-disk-udev         ceph-run
-ceph-create-keys       ceph-mds               ceph-syn
-ceph-crush-location    ceph-mon
-root@jicheng-Lenovo:~/my-cluster# ceph-mon start
-too many arguments: [start]
-usage: ceph-mon -i monid [flags]
-  --debug_mon n
-        debug monitor level (e.g. 10)
-  --mkfs
-        build fresh monitor fs
-  --force-sync
-        force a sync from another mon by wiping local data (BE CAREFUL)
-  --yes-i-really-mean-it
-        mandatory safeguard for --force-sync
-  --compact
-        compact the monitor store
-  --osdmap <filename>
-        only used when --mkfs is provided: load the osdmap from <filename>
-  --inject-monmap <filename>
-        write the <filename> monmap to the local monitor store and exit
-  --extract-monmap <filename>
-        extract the monmap from the local monitor store and exit
-  --mon-data <directory>
-        where the mon store and keyring are located
-  --conf/-c FILE    read configuration from the given configuration file
-  --id/-i ID        set ID portion of my name
-  --name/-n TYPE.ID set name
-  --cluster NAME    set cluster name (default: ceph)
-  --setuser USER    set uid to user or uid (and gid to user's gid)
-  --setgroup GROUP  set gid to group or gid
-  --version         show version and quit
-
-  -d                run in foreground, log to stderr.
-  -f                run in foreground, log to usual location.
-  --debug_ms N      set message debug level (e.g. 1)
-root@jicheng-Lenovo:~/my-cluster# vim /etc/host
-host.conf    hostname     hosts        hosts.allow  hosts.deny
-root@jicheng-Lenovo:~/my-cluster# vim /etc/hosts
-root@jicheng-Lenovo:~/my-cluster# ceph-deploy mon initial
-usage: ceph-deploy mon [-h] {add,create,create-initial,destroy} ...
-ceph-deploy mon: error: argument subcommand: invalid choice: 'initial' (choose from 'add', 'create', 'create-initial', 'destroy')
-root@jicheng-Lenovo:~/my-cluster# ceph-deploy mon create-initial
-[ceph_deploy.conf][DEBUG ] found configuration file at: /root/.cephdeploy.conf
-[ceph_deploy.cli][INFO  ] Invoked (1.5.34): /usr/bin/ceph-deploy mon create-initial
-[ceph_deploy.cli][INFO  ] ceph-deploy options:
-[ceph_deploy.cli][INFO  ]  username                      : None
-[ceph_deploy.cli][INFO  ]  verbose                       : False
-[ceph_deploy.cli][INFO  ]  overwrite_conf                : False
-[ceph_deploy.cli][INFO  ]  subcommand                    : create-initial
-[ceph_deploy.cli][INFO  ]  quiet                         : False
-[ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7ff02ce46200>
-[ceph_deploy.cli][INFO  ]  cluster                       : ceph
-[ceph_deploy.cli][INFO  ]  func                          : <function mon at 0x7ff02ce209b0>
-[ceph_deploy.cli][INFO  ]  ceph_conf                     : None
-[ceph_deploy.cli][INFO  ]  default_release               : False
-[ceph_deploy.cli][INFO  ]  keyrings                      : None
-[ceph_deploy.mon][DEBUG ] Deploying mon, cluster ceph hosts node1
-[ceph_deploy.mon][DEBUG ] detecting platform for host node1 ...
-[node1][DEBUG ] connected to host: node1
-[node1][DEBUG ] detect platform information from remote host
-[node1][DEBUG ] detect machine type
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: /sbin/initctl version
-[node1][DEBUG ] find the location of an executable
-[ceph_deploy.mon][INFO  ] distro info: Ubuntu 14.04 trusty
-[node1][DEBUG ] determining if provided host has same hostname in remote
-[node1][DEBUG ] get remote short hostname
-[node1][WARNIN] ********************************************************************************
-[node1][WARNIN] provided hostname must match remote hostname
-[node1][WARNIN] provided hostname: node1
-[node1][WARNIN] remote hostname: jicheng-Lenovo
-[node1][WARNIN] monitors may not reach quorum and create-keys will not complete
-[node1][WARNIN] ********************************************************************************
-[node1][DEBUG ] deploying mon to node1
-[node1][DEBUG ] get remote short hostname
-[node1][DEBUG ] remote hostname: jicheng-Lenovo
-[node1][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
-[node1][DEBUG ] create the mon path if it does not exist
-[node1][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-jicheng-Lenovo/done
-[node1][DEBUG ] create a done file to avoid re-doing the mon deployment
-[node1][DEBUG ] create the init path if it does not exist
-[node1][INFO  ] Running command: initctl emit ceph-mon cluster=ceph id=jicheng-Lenovo
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[node1][WARNIN] monitor: mon.node1, might not be running yet
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[node1][WARNIN] monitor node1 does not exist in monmap
-[node1][WARNIN] neither `public_addr` nor `public_network` keys are defined for monitors
-[node1][WARNIN] monitors may not be able to form quorum
-[ceph_deploy.mon][INFO  ] processing monitor mon.node1
-[node1][DEBUG ] connected to host: node1
-[node1][DEBUG ] detect platform information from remote host
-[node1][DEBUG ] detect machine type
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: /sbin/initctl version
-[node1][DEBUG ] find the location of an executable
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 5
-[ceph_deploy.mon][WARNIN] waiting 5 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 4
-[ceph_deploy.mon][WARNIN] waiting 10 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 3
-[ceph_deploy.mon][WARNIN] waiting 10 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 2
-[ceph_deploy.mon][WARNIN] waiting 15 seconds before retrying
-[node1][INFO  ] Running command: ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.node1.asok mon_status
-[node1][ERROR ] admin_socket: exception getting command descriptions: [Errno 2] No such file or directory
-[ceph_deploy.mon][WARNIN] mon.node1 monitor is not yet in quorum, tries left: 1
-[ceph_deploy.mon][WARNIN] waiting 20 seconds before retrying
-[ceph_deploy.mon][ERROR ] Some monitors have still not reached quorum:
-[ceph_deploy.mon][ERROR ] node1
-
-root@jicheng-Lenovo:~/my-cluster#
-============================================================================================================================
-解决办法1：
-vim /etc/ceph/ceph.conf
-[global]
-fsid = 0a91b62e-cd43-4558-9ebd-4719f830cf8b
-mon_initial_members = mon1,mon2,mon3
-mon_host = 192.168.33.30,192.168.33.31,192.168.33.32
-auth_supported = cephx
-osd_journal_size = 1024
-filestore_xattr_use_omap = true
-public_network = 192.168.0.0/24
-加入public_network
+ * Documentation:  https://help.ubuntu.com/
 
 
+WARNING: Security updates for your current Hardware Enablement Stack
+ended on 2016-08-04:
+ * http://wiki.ubuntu.com/1404_HWE_EOL
+
+There is a graphics stack installed on this system. An upgrade to a
+configuration supported for the full lifetime of the LTS will become
+available on 2016-07-21 and can be installed by running 'update-manager'
+in the Dash.
+
+Last login: Wed Sep  7 10:03:51 2016 from 10.9.230.207
+root@node3:~# date
+2016年 09月 07日 星期三 12:28:52 CST
+root@node3:~# exit
+注销
+Connection to node3 closed.
+root@node1:/var/log/ceph# ssh client1
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-25-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+New release '16.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Wed Sep  7 12:33:03 2016 from 10.9.177.33
+root@client1:~# date
+2016年 09月 07日 星期三 12:36:20 CST
+root@client1:~# cd /var/log
+root@client1:/var/log# ll
+总用量 4268
+drwxrwxr-x 15 root              syslog     4096  9月  7  2016 ./
+drwxr-xr-x 14 root              root       4096  8月  5  2015 ../
+-rw-r--r--  1 root              root      28593  9月  7  2016 alternatives.log
+-rw-r-----  1 root              adm        1597  9月  7  2016 apport.log
+drwxr-xr-x  2 root              root       4096  9月  7  2016 apt/
+-rw-r-----  1 syslog            adm       34774  9月  7 12:36 auth.log
+-rw-r--r--  1 root              root        318  9月  7  2016 boot.log
+-rw-r--r--  1 root              root      61499  8月  5  2015 bootstrap.log
+-rw-rw----  1 root              utmp          0  8月  5  2015 btmp
+drwxrws--T  2 ceph              ceph       4096  6月 14 20:12 ceph/
+drwxr-xr-x  2 root              root       4096  9月  7  2016 cups/
+drwxr-xr-x  2 root              root       4096  2月  5  2015 dist-upgrade/
+-rw-r-----  1 root              adm       97616  9月  7  2016 dmesg
+-rw-r-----  1 root              adm       96272  9月  7  2016 dmesg.0
+-rw-r-----  1 root              adm       20708  9月  7  2016 dmesg.1.gz
+-rw-r-----  1 root              adm       20761  9月  7  2016 dmesg.2.gz
+-rw-r-----  1 root              adm          59  8月  5  2015 dmesg.3.gz
+-rw-r--r--  1 root              root    1355272  9月  7  2016 dpkg.log
+-rw-r--r--  1 root              root    2049472  9月  7  2016 faillog
+-rw-r--r--  1 root              root       3281  8月  5  2015 fontconfig.log
+drwxr-xr-x  2 root              root       4096  8月  5  2015 fsck/
+-rw-r--r--  1 root              root       1407  9月  7  2016 gpu-manager.log
+drwxr-xr-x  3 root              root       4096  8月  5  2015 hp/
+drwxrwxr-x  2 root              root       4096  9月  7  2016 installer/
+-rw-r-----  1 syslog            adm      573693  9月  7  2016 kern.log
+-rw-rw-r--  1 root              utmp   18701432  9月  7 12:36 lastlog
+drwxr-xr-x  2 root              root       4096  9月  7  2016 lightdm/
+drwxr-xr-x  2 ntp               ntp        4096  2月 12  2016 ntpstats/
+-rw-r--r--  1 root              root      27334  9月  7  2016 pm-powersave.log
+drwxr-x---  2 root              adm        4096  7月  1  2015 samba/
+drwx------  2 speech-dispatcher root       4096  2月 19  2014 speech-dispatcher/
+-rw-r-----  1 syslog            adm     1252917  9月  7 12:37 syslog
+-rw-r--r--  1 root              root     496448  9月  7  2016 udev
+drwxr-xr-x  2 root              root       4096  9月  7  2016 unattended-upgrades/
+drwxr-xr-x  2 root              root       4096  9月  7  2016 upstart/
+-rw-------  1 root              root        140  9月  7  2016 vsftpd.log
+-rw-rw-r--  1 root              utmp      35328  9月  7 12:36 wtmp
+-rw-r--r--  1 root              root      38047  9月  7  2016 Xorg.0.log
+-rw-r--r--  1 root              root      37993  9月  7  2016 Xorg.0.log.old
+-rw-------  1 root              root        581  9月  7  2016 xrdp-sesman.log
+root@client1:/var/log# cd ceph/
+root@client1:/var/log/ceph# ll
+总用量 8
+drwxrws--T  2 ceph ceph   4096  6月 14 20:12 ./
+drwxrwxr-x 15 root syslog 4096  9月  7  2016 ../
+root@client1:/var/log/ceph# ll
+总用量 8
+drwxrws--T  2 ceph ceph   4096  6月 14 20:12 ./
+drwxrwxr-x 15 root syslog 4096  9月  7  2016 ../
+root@client1:/var/log/ceph# exit
+注销
+Connection to client1 closed.
+root@node1:/var/log/ceph# ll
+总用量 48
+drwxrws--T  2 ceph ceph    4096  9月  7 12:34 ./
+drwxrwxr-x 15 root syslog  4096  9月  7 12:01 ../
+-rw-------  1 ceph ceph   12130  9月  7 12:35 ceph.log
+-rw-r--r--  1 ceph ceph   13965  9月  7 12:32 ceph-mon.jicheng-Lenovo.log
+-rw-r--r--  1 ceph ceph   10994  9月  7 12:36 ceph-mon.node1.log
+root@node1:/var/log/ceph# vim ceph.log
+2016-09-07 12:26:53.305350 osd.7 10.9.230.72:6800/2632 194 : cluster [WRN] slow request 3840.134622 seconds old, received at 2016-09-07 11:22:53.170657: osd_op(client.64122.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+2016-09-07 12:27:55.310373 osd.7 10.9.230.72:6800/2632 195 : cluster [WRN] 6 slow requests, 1 included below; oldest blocked for > 4326.508644 secs
+2016-09-07 12:27:55.310382 osd.7 10.9.230.72:6800/2632 196 : cluster [WRN] slow request 30.726090 seconds old, received at 2016-09-07 12:27:24.584222: osd_op(client.74098.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+2016-09-07 12:28:25.312857 osd.7 10.9.230.72:6800/2632 197 : cluster [WRN] 6 slow requests, 1 included below; oldest blocked for > 4356.511129 secs
+2016-09-07 12:28:25.312866 osd.7 10.9.230.72:6800/2632 198 : cluster [WRN] slow request 60.728575 seconds old, received at 2016-09-07 12:27:24.584222: osd_op(client.74098.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+2016-09-07 12:29:25.317819 osd.7 10.9.230.72:6800/2632 199 : cluster [WRN] 6 slow requests, 1 included below; oldest blocked for > 4416.516090 secs
+2016-09-07 12:29:25.317828 osd.7 10.9.230.72:6800/2632 200 : cluster [WRN] slow request 120.733536 seconds old, received at 2016-09-07 12:27:24.584222: osd_op(client.74098.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+~
+                                                              64,1         底端
+login as: root
+root@10.9.177.33's password:
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.19.0-25-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
 
 
+WARNING: Security updates for your current Hardware Enablement Stack
+ended on 2016-08-04:
+ * http://wiki.ubuntu.com/1404_HWE_EOL
+
+There is a graphics stack installed on this system. An upgrade to a
+configuration supported for the full lifetime of the LTS will become
+available on 2016-07-21 and can be installed by running 'update-manager'
+in the Dash.
+
+Last login: Wed Sep  7 12:29:24 2016 from 10.9.191.16
+root@node1:~# cd /var/log/
+root@node1:/var/log# cd ceph/
+root@node1:/var/log/ceph# ll
+总用量 48
+drwxrws--T  2 ceph ceph    4096  9月  7 12:01 ./
+drwxrwxr-x 15 root syslog  4096  9月  7 12:01 ../
+-rw-------  1 ceph ceph   11273  9月  7 12:34 ceph.log
+-rw-r--r--  1 ceph ceph   13965  9月  7 12:32 ceph-mon.jicheng-Lenovo.log
+-rw-r--r--  1 ceph ceph   10562  9月  7 12:33 ceph-mon.node1.log
+root@node1:/var/log/ceph# vim ceph.log
+root@node1:/var/log/ceph# ssh node3
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.19.0-25-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+
+WARNING: Security updates for your current Hardware Enablement Stack
+ended on 2016-08-04:
+ * http://wiki.ubuntu.com/1404_HWE_EOL
+
+There is a graphics stack installed on this system. An upgrade to a
+configuration supported for the full lifetime of the LTS will become
+available on 2016-07-21 and can be installed by running 'update-manager'
+in the Dash.
+
+Last login: Wed Sep  7 10:03:51 2016 from 10.9.230.207
+root@node3:~# date
+2016年 09月 07日 星期三 12:28:52 CST
+root@node3:~# exit
+注销
+Connection to node3 closed.
+root@node1:/var/log/ceph# ssh client1
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-25-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+New release '16.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Wed Sep  7 12:33:03 2016 from 10.9.177.33
+root@client1:~# date
+2016年 09月 07日 星期三 12:36:20 CST
+root@client1:~# cd /var/log
+root@client1:/var/log# ll
+总用量 4268
+drwxrwxr-x 15 root              syslog     4096  9月  7  2016 ./
+drwxr-xr-x 14 root              root       4096  8月  5  2015 ../
+-rw-r--r--  1 root              root      28593  9月  7  2016 alternatives.log
+-rw-r-----  1 root              adm        1597  9月  7  2016 apport.log
+drwxr-xr-x  2 root              root       4096  9月  7  2016 apt/
+-rw-r-----  1 syslog            adm       34774  9月  7 12:36 auth.log
+-rw-r--r--  1 root              root        318  9月  7  2016 boot.log
+-rw-r--r--  1 root              root      61499  8月  5  2015 bootstrap.log
+-rw-rw----  1 root              utmp          0  8月  5  2015 btmp
+drwxrws--T  2 ceph              ceph       4096  6月 14 20:12 ceph/
+drwxr-xr-x  2 root              root       4096  9月  7  2016 cups/
+drwxr-xr-x  2 root              root       4096  2月  5  2015 dist-upgrade/
+-rw-r-----  1 root              adm       97616  9月  7  2016 dmesg
+-rw-r-----  1 root              adm       96272  9月  7  2016 dmesg.0
+-rw-r-----  1 root              adm       20708  9月  7  2016 dmesg.1.gz
+-rw-r-----  1 root              adm       20761  9月  7  2016 dmesg.2.gz
+-rw-r-----  1 root              adm          59  8月  5  2015 dmesg.3.gz
+-rw-r--r--  1 root              root    1355272  9月  7  2016 dpkg.log
+-rw-r--r--  1 root              root    2049472  9月  7  2016 faillog
+-rw-r--r--  1 root              root       3281  8月  5  2015 fontconfig.log
+drwxr-xr-x  2 root              root       4096  8月  5  2015 fsck/
+-rw-r--r--  1 root              root       1407  9月  7  2016 gpu-manager.log
+drwxr-xr-x  3 root              root       4096  8月  5  2015 hp/
+drwxrwxr-x  2 root              root       4096  9月  7  2016 installer/
+-rw-r-----  1 syslog            adm      573693  9月  7  2016 kern.log
+-rw-rw-r--  1 root              utmp   18701432  9月  7 12:36 lastlog
+drwxr-xr-x  2 root              root       4096  9月  7  2016 lightdm/
+drwxr-xr-x  2 ntp               ntp        4096  2月 12  2016 ntpstats/
+-rw-r--r--  1 root              root      27334  9月  7  2016 pm-powersave.log
+drwxr-x---  2 root              adm        4096  7月  1  2015 samba/
+drwx------  2 speech-dispatcher root       4096  2月 19  2014 speech-dispatcher/
+-rw-r-----  1 syslog            adm     1252917  9月  7 12:37 syslog
+-rw-r--r--  1 root              root     496448  9月  7  2016 udev
+drwxr-xr-x  2 root              root       4096  9月  7  2016 unattended-upgrades/
+drwxr-xr-x  2 root              root       4096  9月  7  2016 upstart/
+-rw-------  1 root              root        140  9月  7  2016 vsftpd.log
+-rw-rw-r--  1 root              utmp      35328  9月  7 12:36 wtmp
+-rw-r--r--  1 root              root      38047  9月  7  2016 Xorg.0.log
+-rw-r--r--  1 root              root      37993  9月  7  2016 Xorg.0.log.old
+-rw-------  1 root              root        581  9月  7  2016 xrdp-sesman.log
+root@client1:/var/log# cd ceph/
+root@client1:/var/log/ceph# ll
+总用量 8
+drwxrws--T  2 ceph ceph   4096  6月 14 20:12 ./
+drwxrwxr-x 15 root syslog 4096  9月  7  2016 ../
+root@client1:/var/log/ceph# ll
+总用量 8
+drwxrws--T  2 ceph ceph   4096  6月 14 20:12 ./
+drwxrwxr-x 15 root syslog 4096  9月  7  2016 ../
+root@client1:/var/log/ceph# exit
+注销
+Connection to client1 closed.
+root@node1:/var/log/ceph# ll
+总用量 48
+drwxrws--T  2 ceph ceph    4096  9月  7 12:34 ./
+drwxrwxr-x 15 root syslog  4096  9月  7 12:01 ../
+-rw-------  1 ceph ceph   12130  9月  7 12:35 ceph.log
+-rw-r--r--  1 ceph ceph   13965  9月  7 12:32 ceph-mon.jicheng-Lenovo.log
+-rw-r--r--  1 ceph ceph   10994  9月  7 12:36 ceph-mon.node1.log
+root@node1:/var/log/ceph# vim ceph.log
+2016-09-07 12:26:53.305350 osd.7 10.9.230.72:6800/2632 194 : cluster [WRN] slow request 3840.134622 seconds old, received at 2016-09-07 11:22:53.170657: osd_op(client.64122.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+2016-09-07 12:27:55.310373 osd.7 10.9.230.72:6800/2632 195 : cluster [WRN] 6 slow requests, 1 included below; oldest blocked for > 4326.508644 secs
+2016-09-07 12:27:55.310382 osd.7 10.9.230.72:6800/2632 196 : cluster [WRN] slow request 30.726090 seconds old, received at 2016-09-07 12:27:24.584222: osd_op(client.74098.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+2016-09-07 12:28:25.312857 osd.7 10.9.230.72:6800/2632 197 : cluster [WRN] 6 slow requests, 1 included below; oldest blocked for > 4356.511129 secs
+2016-09-07 12:28:25.312866 osd.7 10.9.230.72:6800/2632 198 : cluster [WRN] slow request 60.728575 seconds old, received at 2016-09-07 12:27:24.584222: osd_op(client.74098.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+2016-09-07 12:29:25.317819 osd.7 10.9.230.72:6800/2632 199 : cluster [WRN] 6 slow requests, 1 included below; oldest blocked for > 4416.516090 secs
+2016-09-07 12:29:25.317828 osd.7 10.9.230.72:6800/2632 200 : cluster [WRN] slow request 120.733536 seconds old, received at 2016-09-07 12:27:24.584222: osd_op(client.74098.0:2 0.6a181655 rbd_id.foo [stat] snapc 0=[] ack+read+known_if_redirected e53) currently waiting for rw locks
+~
+                                                              64,1         底端
