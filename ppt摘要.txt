@@ -1,0 +1,26 @@
+列表
+1、列表使用方式param = ['a','b']，访问方式param[0],param[1]
+2、修改：param[0]='c'，添加：param.append('b')，插入：param.insert(0,'d')，删除：del param[1]
+3、value = pop(0)，param.remove('a')
+4、永久性排序：param.sort()，临时排序：paramTemp = param.sorted()
+5、param.reverse()
+6、访问最后一个元素param[-1]
+列表操作
+1、使用for循环进行遍历列表：for value in param
+2、使用range()函数生成列表：range(1,5)，修改range函数的增长步长：range(1,5,2)
+3、关键功能切片：param[1:2],param[1:],param[:3],param[:]
+4、元祖：(12,35,68)
+if语句
+if age<4:
+	print 4
+elif age>=4 and age<=8:
+	print 5
+else:
+	print 11
+if not age<4:
+	print 6
+字典
+1、简单的字典map = {'key1':'asd','key2':3,3:"234"}
+2、删除键值对：del map['key1']
+3、遍历字典：for key,value in map.items(),for key in map.keys(),for value in map.values()
+4、排序字典sorted(map.keys())
