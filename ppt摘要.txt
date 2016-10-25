@@ -24,3 +24,23 @@ if not age<4:
 2、删除键值对：del map['key1']
 3、遍历字典：for key,value in map.items(),for key in map.keys(),for value in map.values()
 4、排序字典sorted(map.keys())
+while循环
+current_number = 1
+while current_number<=5:
+	print current_number
+	current_number += 1
+函数与类
+1、函数的定义：
+def greet_user():
+	print "hello!"
+2、关键字实参：就是调用函数的时候传递一个键值对，这样就可以不用考虑参数传递的位置，例如：fun(param1=1,param3=3,param2=2)
+3、默认值：在函数定义的时候，可以传递一个值给形参，这样就可以在调用的时候，有一个默认值而可以不用传递这个参数，例如：def fun(param1,param2=4)
+4、导入模块的时候可以使用as指定别名：import module_name as mn
+5、类的定义：
+class Dog(Object):
+	def __init__(self,param1,param2):
+		super(Dog,self).__init__()
+		self.param1 = param2
+		self.param2 = param2
+	def fun(self):
+		pass
