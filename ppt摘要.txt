@@ -44,3 +44,41 @@ class Dog(Object):
 		self.param2 = param2
 	def fun(self):
 		pass
+文件和异常
+1、使用with关键字，可以自动关闭：
+with open('text.txt') as file_obj:
+	cotents = file_obj.read()
+	print contents
+2、文件路径问题：window下面使用的是\,Linux下面使用的是/，在python打开文件过程中最好使用/，以防止转义字符的出现
+
+3、逐行读取读取一个文件：
+with open('text.txt') as file_obj:
+	for line in file_obj:
+		print line
+4、创建一个包含文件各行的一个列表：
+with open('text.txt') as file_obj:
+	lines = file_obj.readLines()
+for line in lines:
+	print line
+5、文件的读写、追加：
+with open('text.txt','w') as file_obj//这种是只能写不能读取的，而且写的时候如果文件不存在会自动创建，如果文件存在或覆盖原先的内容
+with open('text.txt','a') as file_obj//这种是以追加的方式打开文件，可以向文件后面直接添加内容
+with open('text.txt','r+') as file_obj//这种是以读写的方式打开文件
+
+6、异常相关：
+try:
+	pass//正常要异常检查的代码块
+except Exception as e:
+	raise//异常处理代码块
+else:
+	pass//只有try代码块正常执行了，才会运行的代码块
+finally:
+	pass//无论怎么样都会执行的代码块
+7、python测试的本来真面目：
+import unittest
+class Testtest(unittest.TestCase):
+	def setUp(): //在每个测试方法之前都会调用
+		pass
+    def test_first_test(self):
+        pass
+unittest.main()
