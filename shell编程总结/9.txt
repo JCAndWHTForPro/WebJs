@@ -1,0 +1,134 @@
+1、for命令
+	基本格式：
+		for var in list
+		do
+			commands
+		done
+	举例：
+		#!/bin/bash
+		for test in ji sd cv we gffd sdfa
+		do
+			echo The next state is $test
+		done
+
+	说明：上面的例子中，test是一个变量，在for结束之后，test一样可以在外面访问，他的值是最后一个列表的值
+
+2、for循环中解决单引号带来的问题：
+	问题举例：
+		#!/bin/bash
+		for test in I don't know if this'll work
+		do
+		 	echo "word:$test"
+		done
+	输出：
+		word:I
+		word:dont know if thisll
+		word:work
+	解决办法：
+		（1）使用转义字符（反斜线）来将单引号转义
+		（2）使用双引号来定义用到的单引号的值
+	解决举例：I don\'t know if "this'll" work（第一处使用的是（1）办法，第二个使用的是（2）办法）
+
+3、循环列表的时候想要多个空格变成一个单词：
+	问题举例：
+		for test in New York Nevada
+	解决办法：使用双引号
+		for test in "New York" Nevada
+4、从变量中读取列表
+	举例：
+		#!/bin/bash
+		list="asdf fwe cvsd weew dgsd"
+		list=$list" wer"#向列表尾部添加新元素的常用方法
+		for state in $list
+		do
+			echo "Have you ever visited $state"
+		done
+5、从命令读取值
+	举例：
+		#!/bin/bash
+		file="states"#这个地方时将文件名赋给了一个变量file
+		for state in `cat $file`
+		do
+			echo "Visit beautiful $state"
+		done
+	问题：这种方式，在文件中如果每一行都有一个州的名字的话，那么的话会列出来；如果每一行的州名中间有空格的话，那么这个for循环一样会识别这个空格，将单词拆分开来
+
+6、更改字段分隔符
+	IFS：内部字段分隔符，是一个特殊的环境变量，默认情况下，bash shell会将下列的字符当做字段的分隔符：
+		空格
+		制表符
+		换行符
+	临时改变字段分隔符举例：
+		#!/bin/bash
+		IFS=$'\n'#这个地方将IFS这个内部分割符改成了换行
+		file="states"
+		for state in `cat $file`
+		do
+			echo "Visit beautiful $state"
+		done
+	另外：
+		IFS=:#这个将分隔符改成了冒号
+		IFS=$'\n:;'"#这个分隔符改成了换行符、冒号、分号和双引号
+
+7、使用通配符读取目录
+	举例：
+		#!/bin/bash
+		for file in /home/rich/test/*
+		do
+			if [ -d "$file" ]
+			then
+				echo "$file is a directory"
+			elif [ -f "$file" ]
+			then
+				echo "$file is a file"
+			else
+				echo "$file doesn't exist"
+			fi
+		done
+	说明：这里将file这个变量双引起来，主要是问了放置文件或是目录的名字里面有空格，如果不这样并且有空格的名字，那么shell就会报错
+
+8、C语言风格的for
+	基本示例：for(( a= 1; a < 10; a++ ))
+	说明：
+		（1）给变量赋值可以有空格
+		（2）条件中的变量不以美元符开头
+		（3）迭代过程中的算式未用expr米宁格式
+	举例：
+		#!/bin/bash
+		for (( a=1, b=10; a<= 10; a++,b-- ))
+		do
+			echo "$a - $b"
+		done
+	另外：经测试这种方式的for必须是要在bash中使用，ubuntu启动使用的是dash，所以要切换一下，具体切换方式可以buidu一下
+9、while命令
+	基本格式：
+		while test command
+		do
+			other commands
+		done
+	说明：循环执行commands，直到test命令，或是其他命令的退出码非零之后结束循环
+	举例：
+		#!/bin/bash
+		var1=10
+		while [ $var1 -gt 0 ]
+		do
+			echo $var1
+			var=$[ $var1-1 ]
+		done
+10、until命令：与while循环相反，命令要求你指定一个通常输出非零退出状态码的测试命令，只有测试命令的退出状态码非零，bash shell才会指定循环中列出的那些命令，一旦测试命令返回了退出状态码0，循环就结束了。
+
+11、break和continue，在shell中一样有效果，和其他语言一样，不一样的是可以使用一个语法：
+	break n(continue n)
+这个表示要跳出（继续）哪一层循环，默认n的值是1，表示当前所在的循环，设置成2的话，表示要跳出（继续）上一层的循环
+
+12、循环结束之后的输出：
+	（1）输出重定向到一个文件：
+		for(( a=1; a<10; a++ ))
+		do
+			echo "The number is $a"
+		done > test12.txt#输出重定向到了test12.txt文件里面
+	（2）管道
+		for state in adsf swe gfdet efg
+		do 
+			echo "$state is the next place to go"
+		done | sort#输出直接排序
