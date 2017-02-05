@@ -1,0 +1,84 @@
+我们有高兴，有不高兴；我们有在意，有不在意；我们有在行，有不在行。。。我们之所以为人，是因为我们拥有大脑，情感与性格，我们不仅仅只会吃，只会做爱，我们还会品尝食物的美味，还会挑选与自己性格合得来的伴侣，我们更会如何抑制或是排解自我的负面情绪，不至于崩溃。你可以不多想，在意少，只顾自己，但是你一定会得到应有的报应，到那时，我想食色应该都会失色了。
+1、使用if-then语句：
+if command
+then
+	commands
+fi
+说明：bash sell中if语句运行if行定义的那个命令，如果该命令的退出码是0，位于then部分的命令就会被执行。如果该命令的退出码是其他的什么值，那么then部分的命令就不会被执行
+举例：
+	#!/bin/bash
+	if data
+		echo "it worked"
+	fi
+2、if-then-else语句：
+if command
+then
+	commands
+else
+	commands
+fi
+
+3、嵌套if：
+if command1
+then
+	commands
+elif command2
+then
+	more commands
+fi
+
+4、使用test命令：test命令提供了在if-then语句中测试不同条件的途径。如果test命令中列出的条件成立，test命令就会退出并返回退出码0，这样if-then语句就与其他编程语言中的if-then语句一样了。
+	举例：
+		if test condition
+		then
+			commands
+		fi
+	另外一种使用方法：
+		if [ commands ]
+		then
+			commands
+		fi
+		这种使用方式注意必须要在左括号的右侧与右括号的左侧各加一个空格，否则会报错
+	主要判断条件：
+		（1）数值比较
+		（2）字符串比较
+		（3）文件比较
+
+5、数值比较
+	主要比较的几个关键字：
+		-eq	相等
+		-ge	大于或等于
+		-gt	大于
+		-le	小于或等于
+		-lt	小于
+		-ne	不等于
+	举例：
+		if [ 3 -gt 2 ]
+		then
+			echo "This is a test"
+		if
+	注意：不能使用浮点值进行判断
+
+6、字符串比较
+	主要比较的几个关键字符：
+		=		相同
+		!=		不同
+		<		小
+		>		大
+		-n     非0
+		-z		为0
+	问题：对于>与<这两个符号要进行转义：\>、\<
+	测试项：test在字符串比较的时候，大小写情况
+
+7、文件比较
+	-d file 是否存在并且是一个目录
+	-e file 是否存在
+	-f file 是否存在并是一个文件
+	-r file 是否存在并可读
+	-s file
+	-w file
+	-x file
+	-O file
+	-G file
+	file1 -nt file2
+	file1 -ot file2
