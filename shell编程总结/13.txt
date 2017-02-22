@@ -21,4 +21,4 @@
 
 3、使用source命令将另外一个shell脚本当做当前的shell的上下文，类似于将另外一个shell脚本导入当前脚本中，也可以使用一个快捷别名：点操作符：
 	source /home/init(. /home/init)
-	
+
