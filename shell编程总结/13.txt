@@ -1,5 +1,93 @@
-（续）
-1、函数的特性：
+这一章主要讲的是每个编程语言都躲不开的功能：函数
+1、创建函数
+	格式：
+		（1）
+		function name {
+			commands
+		}
+		（2）
+		name(){
+			commands
+		}
+	说明：两种格式使用哪种都可以
+
+2、使用函数
+	举例：
+		#!/bin/bash
+		function func2{
+			echo "This is an example of a function"
+		}
+		func2
+	说明：注意，函数必须要先定义在使用，所以函数要定义在最前头，在使用之前，这一点类似于c语言的特性，还有，如果重复定义了同名字的函数，会出现覆盖的现象，最终使用的函数体是最后一次定义的函数
+3、返回值：bash shell会把函数当成小型脚本，运行结束时会返回一个退出状态码，有3种不同的方法来生成退出状态码
+	（1）默认退出状态码：使用$?变量来查看或者修改退出状态码，不过这个状态码是最后一条命令运行的状态码，如果中间有命令报错，报错的状态码是不会被保留的。
+		 举例：
+		 	#!/bin/bash
+		 	func1{
+		 		echo "Test"
+		 		ls -l badfile
+		 	}
+		 	func1
+		 	echo "$?"
+		 另一个例子：
+		 	#!/bin/bash
+		 	func1{
+		 		ls -l badfile
+		 		echo "Test"
+		 	}
+		 	func1
+		 	echo "$?"
+		 说明：这两个例子一个最后输出的是1，一个是0
+	（2）使用return命令来返回特定的退出状态码并且结束函数
+		举例：
+			#!/bin/bash
+			function db1{
+				read -p "Enter a value: "value
+				echo "double the value"
+				return $[ $value *2 ]
+			}	
+			db1
+			echo "The new value is $?"
+
+		说明：
+			a、记住，函数一结束就取返回值
+			b、记住，退出状态码必须在0~255之间
+			$?这个变量时会返回最后一条命令退出状态码，所以如果在取状态码之前执行了其他命令，那么这个变量的值就会被改变
+			另外，如果返回一个大于256的值，都会返回一个错误的值：1
+	（3）使用变量保存函数的返回值，也就是退出状态码，这样就可以摆脱$?被其他命令改变的命运
+		举例：
+			#!/bin/bash
+			function db1{
+				read -p "Enter a value: "value
+				echo "double the value"
+				return $[ $value *2 ]
+			}	
+			resut=`db1`
+			echo "The new value is $result"
+
+4、向函数传递参数：和普通shell脚本运行时一样传递，因为函数类似于一个小脚本，所以内部对参数的处理也是一样的
+	举例：
+		传递举例：func1 3 4
+		处理举例：
+			#!/bin/bash
+			function func1{
+				if [ $# -eq 0 ] || [ $# -gt 2 ]
+				then
+					echo -1
+				elif [ $# -eq 1 ]
+				then
+				 	echo $[ $1+$1 ]
+				 else
+				 	echo $[ $1+$2 ]
+				 fi
+			}
+			value=`fun1 10 15`
+			echo $value
+			value=`func1 10`
+			echo $value
+		说明：这里面value保存的函数输出或者是返回值，shell函数会将输出与返回值一起保存给最终的执行结果的
+
+5、函数的特性：
 	举例：
 	#!/bin/bash
 	function badfunction1{
@@ -15,10 +103,10 @@
 	$ ./badtest1 10 15
 	说明：这个运行会报语法错误，因为函数的传入参数不能使用shell脚本本身的使用参数，他们是独立的，如果真的想使用脚本shell的参数的话，那要在调用函数的时候，手动传入
 
-2、在函数中处理变量：一共有两类变量，一个是全局变量，一个是局部变量
+6、在函数中处理变量：一共有两类变量，一个是全局变量，一个是局部变量
 	（1）全局变量：在shell脚本中的任何地方都有效的变量。如果在主题部分定义一个变量的话，那么这个就是全局变量，如果在函数内自然定义一个变量的话，也是全局变量。默认情况下，你在脚本中定义的任何变量都是全局变量。
 	（2）局部变量：只可以在函数内部使用的变量，定义方法：local temp，如果和全局变量同名的话，shell会保证两个变量值的分离
 
-3、使用source命令将另外一个shell脚本当做当前的shell的上下文，类似于将另外一个shell脚本导入当前脚本中，也可以使用一个快捷别名：点操作符：
+7、使用source命令将另外一个shell脚本当做当前的shell的上下文，类似于将另外一个shell脚本导入当前脚本中，也可以使用一个快捷别名：点操作符：
 	source /home/init(. /home/init)
 
